@@ -77,6 +77,19 @@
         .video-frame { aspect-ratio: 16/9; background: radial-gradient(circle at 25% 20%, rgba(217,119,6,0.28), transparent 60%), linear-gradient(135deg, #0f172a, #1e293b); }
         .play-btn { transition: transform 0.3s ease; }
         .video-frame:hover .play-btn { transform: scale(1.12); }
+
+        /* Oekosystem-Logos: sanfte, nicht-starre Bewegung statt statischer Bilder */
+        @keyframes ecoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .eco-float { animation: ecoFloat 6s ease-in-out infinite; }
+        @keyframes ecoPulse { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.12); } }
+        .eco-glow { animation: ecoPulse 4s ease-in-out infinite; filter: blur(18px); }
+        @keyframes ecoSway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+        .eco-sway { animation: ecoSway 5s ease-in-out infinite; transform-origin: 50% 55%; }
+        @keyframes ecoBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .eco-breathe { animation: ecoBreathe 4s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+            .eco-float, .eco-glow, .eco-sway, .eco-breathe { animation: none; }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen antialiased selection:bg-gold-500 selection:text-white">
@@ -271,6 +284,55 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- OEKOSYSTEM: die drei UNA-Plattformen (nachgebaute Logos, keine Fotoausschnitte — sanft animiert) -->
+        <section class="reveal space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-navy-900 bg-navy-50 px-3.5 py-1.5 rounded-full border border-navy-100" data-i18n="eco-badge">Teil eines wachsenden Ökosystems</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900 font-heading" data-i18n="eco-title">Mehr als eine Webseite — die UNA Group</h2>
+                <p class="text-slate-600 text-xs sm:text-sm" data-i18n="eco-sub">Drei spezialisierte Plattformen, ein gemeinsames Ziel: Ihnen Zeit zurückgeben.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+
+                <!-- una-ai.shop -->
+                <div class="lift-card glass-card p-6 rounded-3xl border border-slate-200/80 text-center space-y-3">
+                    <div class="relative w-40 h-40 mx-auto eco-float" style="animation-delay:0s">
+                        <div class="absolute inset-3 rounded-full eco-glow" style="background:radial-gradient(circle, rgba(16,185,129,0.5), rgba(168,85,247,0.35) 60%, transparent 75%)"></div>
+                        <img src="assets/logo-ai.png" alt="una-ai.shop Logo" class="relative w-full h-full object-contain drop-shadow-xl eco-breathe">
+                    </div>
+                    <div class="pt-1">
+                        <div class="font-extrabold text-navy-900 font-heading text-sm tracking-tight">una-ai.shop</div>
+                        <div class="text-[11px] text-slate-500 mt-0.5" data-i18n="eco-shop-tag">Dienstleistungen — diese Seite</div>
+                        <span class="inline-block mt-2 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full" data-i18n="eco-here">✓ Sie sind hier</span>
+                    </div>
+                </div>
+
+                <!-- una-agent.online -->
+                <div class="lift-card glass-card p-6 rounded-3xl border border-slate-200/80 text-center space-y-3">
+                    <div class="relative w-40 h-40 mx-auto eco-float" style="animation-delay:0.6s">
+                        <img src="assets/logo-agent.png" alt="Una-Agent.online Logo" class="relative w-full h-full object-contain drop-shadow-xl eco-sway">
+                    </div>
+                    <div class="pt-1">
+                        <div class="font-extrabold text-navy-900 font-heading text-sm tracking-tight">una-agent.online</div>
+                        <div class="text-[11px] text-slate-500 mt-0.5" data-i18n="eco-agent-tag">KI-Agenten für Ihr Unternehmen</div>
+                        <span class="inline-block mt-2 text-[10px] font-bold text-slate-500 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-full" data-i18n="eco-soon">In Vorbereitung</span>
+                    </div>
+                </div>
+
+                <!-- unagroup.online -->
+                <div class="lift-card glass-card p-6 rounded-3xl border border-slate-200/80 text-center space-y-3">
+                    <div class="relative w-40 h-40 mx-auto eco-float" style="animation-delay:1.2s">
+                        <img src="assets/logo-group.png" alt="UnaGroup.online Logo" class="relative w-full h-full object-contain drop-shadow-xl eco-sway">
+                    </div>
+                    <div class="pt-1">
+                        <div class="font-extrabold text-navy-900 font-heading text-sm tracking-tight">unagroup.online</div>
+                        <div class="text-[11px] text-slate-500 mt-0.5" data-i18n="eco-group-tag">Produkte & mehr</div>
+                        <span class="inline-block mt-2 text-[10px] font-bold text-slate-500 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-full" data-i18n="eco-soon">In Vorbereitung</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -647,6 +709,10 @@
                 "trust-1-t": "Kein Callcenter", "trust-1-d": "Ein fester Ansprechpartner, kein Callcenter.",
                 "trust-2-t": "Transparente Preise", "trust-2-d": "Keine versteckten Kosten.",
                 "trust-3-t": "Berufsgeheimnis gewahrt", "trust-3-d": "DSGVO- & § 203 StGB-konform.",
+                "eco-badge": "Teil eines wachsenden Ökosystems", "eco-title": "Mehr als eine Webseite — die UNA Group",
+                "eco-sub": "Drei spezialisierte Plattformen, ein gemeinsames Ziel: Ihnen Zeit zurückgeben.",
+                "eco-shop-tag": "Dienstleistungen — diese Seite", "eco-here": "✓ Sie sind hier",
+                "eco-agent-tag": "KI-Agenten für Ihr Unternehmen", "eco-group-tag": "Produkte & mehr", "eco-soon": "In Vorbereitung",
                 "steps-badge": "So einfach geht's", "steps-title": "In 3 Schritten zum sorgenfreien Büro",
                 "step-1-t": "Anrufen oder schreiben", "step-1-d": "Kurz Anliegen schildern.",
                 "step-2-t": "Wir schalten uns dazu", "step-2-d": "Ihr Bildschirm, mit Ihrer Freigabe.",
@@ -721,6 +787,10 @@
                 "trust-1-t": "Bez pozivnog centra", "trust-1-d": "Stalna kontakt osoba, bez pozivnog centra.",
                 "trust-2-t": "Transparentne cijene", "trust-2-d": "Bez skrivenih troskova.",
                 "trust-3-t": "Profesionalna tajna zasticena", "trust-3-d": "Usaglaseno sa GDPR i profesionalnom tajnom.",
+                "eco-badge": "Dio rastuceg ekosistema", "eco-title": "Vise od jedne stranice — UNA Group",
+                "eco-sub": "Tri specijalizirane platforme, jedan zajednicki cilj: da vam vratimo vrijeme.",
+                "eco-shop-tag": "Usluge — ova stranica", "eco-here": "✓ Vi ste ovdje",
+                "eco-agent-tag": "KI-agenti za vasu firmu", "eco-group-tag": "Proizvodi i vise", "eco-soon": "Uskoro dostupno",
                 "steps-badge": "Ovako jednostavno ide", "steps-title": "U 3 koraka do bezbrisne kancelarije",
                 "step-1-t": "Pozovite ili napisite", "step-1-d": "Ukratko opisite problem.",
                 "step-2-t": "Spajamo se preko ekrana", "step-2-d": "Vas ekran, uz vasu dozvolu.",
