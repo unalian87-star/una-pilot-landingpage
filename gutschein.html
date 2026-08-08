@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gutschein | UNA-AI-System</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='14' fill='%230f172a'/%3E%3Cpath d='M14 13v14a10 10 0 0 0 20 0V13' stroke='%23f8fafc' stroke-width='4.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M34 8l2.2 5 5 2.2-5 2.2-2.2 5-2.2-5-5-2.2 5-2.2z' fill='%23d97706'/%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                colors: { navy: { 50:'#f0f4f9', 900:'#0f172a', 950:'#080d1a' }, gold: { 400:'#fbbf24', 500:'#f59e0b', 600:'#d97706', 700:'#b45309' } },
+                fontFamily: { sans: ['Plus Jakarta Sans','sans-serif'], heading: ['Space Grotesk','sans-serif'] }
+            } }
+        }
+    </script>
+    <style>
+        body { background: #f0f4f9; }
+        .voucher {
+            background: radial-gradient(circle at 15% 10%, rgba(217,119,6,0.12), transparent 55%), linear-gradient(135deg, #0f172a, #080d1a);
+            border: 2px dashed rgba(217,119,6,0.5);
+        }
+        .code-box { border: 2px dashed #d97706; letter-spacing: 0.15em; }
+        @media print {
+            body { background: white; }
+            .no-print { display: none !important; }
+            .voucher { border: 3px dashed #b45309; box-shadow: none; }
+            @page { margin: 1.2cm; }
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans flex items-center justify-center p-4 sm:p-8">
+
+    <div class="w-full max-w-xl space-y-6">
+
+        <div class="no-print flex justify-between items-center">
+            <a href="index.html" class="text-navy-900 text-sm font-bold hover:underline flex items-center gap-2"><i class="fa-solid fa-arrow-left"></i> Zurück zur Startseite</a>
+            <button onclick="window.print()" class="bg-navy-900 hover:bg-navy-950 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2">
+                <i class="fa-solid fa-print"></i> Drucken / Als PDF speichern
+            </button>
+        </div>
+
+        <div class="voucher rounded-3xl p-8 sm:p-12 text-center text-white shadow-2xl space-y-6">
+            <div class="flex items-center justify-center gap-3">
+                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10">
+                    <rect width="48" height="48" rx="14" fill="#d97706"/>
+                    <path d="M14 13v14a10 10 0 0 0 20 0V13" stroke="#080d1a" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+                    <path d="M34 8l2.2 5 5 2.2-5 2.2-2.2 5-2.2-5-5-2.2 5-2.2z" fill="#080d1a"/>
+                </svg>
+                <span class="font-extrabold text-lg font-heading tracking-tight">UNA-AI-System</span>
+            </div>
+
+            <div class="uppercase tracking-[0.3em] text-gold-400 text-xs font-bold">Gutschein</div>
+
+            <h1 class="text-3xl sm:text-4xl font-extrabold font-heading leading-tight">
+                Ihr 1. Projekt<br>zu 100% GRATIS
+            </h1>
+
+            <p class="text-slate-300 text-sm max-w-sm mx-auto">
+                Fernhilfe, PC-Einrichtung oder Webseiten-Erstberatung — Ihre erste Anfrage kostet Sie nichts. Als neues Unternehmen möchten wir uns bei Ihnen vorstellen.
+            </p>
+
+            <div class="code-box inline-block rounded-xl px-6 py-3 bg-navy-950/60">
+                <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1">Gutschein-Code</div>
+                <div class="text-2xl font-extrabold font-heading text-gold-400">WILLKOMMEN2026</div>
+            </div>
+
+            <div class="border-t border-white/10 pt-5 space-y-2 text-xs text-slate-300">
+                <p><i class="fa-solid fa-phone text-gold-400 mr-2"></i>+387 65 242 437 — einfach diesen Code am Telefon nennen</p>
+                <p><i class="fa-solid fa-circle-check text-emerald-400 mr-2"></i>Keine Vertragsbindung, keine versteckten Kosten</p>
+                <p class="text-slate-500">Gültig für Neukunden, ein Gutschein pro Kanzlei/Firma. Solange der Einführungspreis-Zeitraum läuft.</p>
+            </div>
+        </div>
+
+        <div class="no-print text-center text-[11px] text-slate-500">
+            CEO Sladi Kičin · <a href="datenschutz.html" class="underline hover:text-gold-600">Datenschutzerklärung</a>
+        </div>
+    </div>
+
+    <!--
+        HINWEIS (nicht Teil der öffentlichen Seite):
+        - Kein PDF-Generierungs-Tool verwendet. "Drucken / Als PDF speichern" nutzt den normalen
+          Browser-Druckdialog (Ziel "Als PDF speichern" wählen) — dafür ist @media print oben gestylt.
+        - Gutschein-Code ist statisch (WILLKOMMEN2026), keine Einlöse-Logik/Datenbank dahinter — Sladi nennt
+          den Code am Telefon manuell ab, es gibt keine automatische Prüfung auf Mehrfacheinlösung.
+    -->
+</body>
+</html>

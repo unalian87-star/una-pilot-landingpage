@@ -9,7 +9,7 @@
     <meta property="og:description" content="Sofort-Fernhilfe per Telefon, faire Webseiten ab ca. 300 KM/€, 1. Projekt gratis.">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#0f172a">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230f172a'/%3E%3Cpath d='M50 20 L65 50 L50 80 L35 50 Z' fill='%23d97706'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='14' fill='%230f172a'/%3E%3Cpath d='M14 13v14a10 10 0 0 0 20 0V13' stroke='%23f8fafc' stroke-width='4.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M34 8l2.2 5 5 2.2-5 2.2-2.2 5-2.2-5-5-2.2 5-2.2z' fill='%23d97706'/%3E%3C/svg%3E">
 
     <!-- Tailwind CSS (CDN — Prototyp-Stand, vor Livegang lokal bauen, siehe Notiz am Dateiende) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -60,6 +60,23 @@
         .gradient-text { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #d97706 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         @keyframes pulseCall { 0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); } 50% { box-shadow: 0 0 0 10px rgba(16,185,129,0); } }
         .call-pulse { animation: pulseCall 2.2s infinite; }
+
+        /* Scroll-Reveal */
+        .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+        /* Hero-Glow Eyecatcher (reines CSS, kein Bild-Asset) */
+        .hero-glow { position: absolute; border-radius: 9999px; filter: blur(70px); pointer-events: none; z-index: 0; animation: floatGlow 11s ease-in-out infinite; }
+        @keyframes floatGlow { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(24px,-18px) scale(1.08); } }
+
+        /* Karten-Tiefe beim Hover */
+        .lift-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .lift-card:hover { transform: translateY(-5px); }
+
+        /* Video-Platzhalter */
+        .video-frame { aspect-ratio: 16/9; background: radial-gradient(circle at 25% 20%, rgba(217,119,6,0.28), transparent 60%), linear-gradient(135deg, #0f172a, #1e293b); }
+        .play-btn { transition: transform 0.3s ease; }
+        .video-frame:hover .play-btn { transform: scale(1.12); }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen antialiased selection:bg-gold-500 selection:text-white">
@@ -87,8 +104,12 @@
     <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200/80 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
             <a href="#" class="flex items-center space-x-3 group shrink-0">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-navy-900 via-navy-800 to-gold-600 flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-compass"></i>
+                <div class="w-11 h-11 rounded-xl shadow-md group-hover:scale-105 transition-transform overflow-hidden">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                        <rect width="48" height="48" rx="14" fill="#0f172a"/>
+                        <path d="M14 13v14a10 10 0 0 0 20 0V13" stroke="#f8fafc" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+                        <path d="M34 8l2.2 5 5 2.2-5 2.2-2.2 5-2.2-5-5-2.2 5-2.2z" fill="#d97706"/>
+                    </svg>
                 </div>
                 <div>
                     <span class="font-extrabold text-base sm:text-lg leading-tight text-navy-900 font-heading tracking-tight block">UNA-AI-System</span>
@@ -117,14 +138,17 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
 
         <!-- HERO -->
-        <section class="pt-6 pb-4 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7 space-y-6">
+        <section class="relative pt-6 pb-4 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="hero-glow w-[420px] h-[420px] -top-24 -left-24 bg-gold-500/20"></div>
+            <div class="hero-glow w-[380px] h-[380px] top-10 right-0 bg-navy-800/10" style="animation-delay: -5s;"></div>
+
+            <div class="relative z-10 lg:col-span-7 space-y-6">
                 <div class="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/30 text-gold-700 px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">
                     <i class="fa-solid fa-shield-halved text-gold-600"></i>
                     <span data-i18n="hero-badge">Für Kanzleien, Notare & KMU</span>
                 </div>
 
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-navy-900 font-heading leading-tight tracking-tight">
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-navy-900 font-heading leading-[1.05] tracking-tight">
                     <span data-i18n="hero-title-1">Sorgenfreier Computer-Alltag.</span><br>
                     <span class="gradient-text" data-i18n="hero-title-2">Sprechen statt Suchen.</span>
                 </h1>
@@ -173,7 +197,7 @@
                 </div>
             </div>
 
-            <div class="lg:col-span-5">
+            <div class="relative z-10 lg:col-span-5">
                 <div class="glass-card bg-white rounded-3xl p-6 sm:p-8 shadow-premium border border-slate-200 relative overflow-hidden">
                     <div class="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
                         <span class="text-xs font-bold uppercase tracking-wider text-navy-900 flex items-center gap-2"><i class="fa-solid fa-sliders text-gold-600"></i><span data-i18n="comp-title">Vorher / Nachher</span></span>
@@ -218,7 +242,7 @@
         </section>
 
         <!-- VERTRAUEN (neu — echte, überprüfbare Signale statt erfundener Bewertungen) -->
-        <section class="glass-card p-6 sm:p-10 rounded-3xl border border-slate-200/80">
+        <section class="reveal glass-card p-6 sm:p-10 rounded-3xl border border-slate-200/80">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
                 <div class="md:col-span-1 text-center md:text-left space-y-1">
                     <h2 class="text-xl font-extrabold text-navy-900 font-heading" data-i18n="trust-title">Warum Kanzleien uns vertrauen</h2>
@@ -250,8 +274,8 @@
             </div>
         </section>
 
-        <!-- SO EINFACH GEHT'S (neu — ersetzt Video-Demo, 3 Schritte ohne Fachwörter) -->
-        <section class="space-y-8">
+        <!-- SO EINFACH GEHT'S (3 Schritte ohne Fachwörter) -->
+        <section class="reveal space-y-8">
             <div class="text-center max-w-2xl mx-auto space-y-2">
                 <span class="text-xs font-bold uppercase tracking-wider text-gold-600 bg-gold-50 px-3.5 py-1.5 rounded-full border border-gold-200" data-i18n="steps-badge">So einfach geht's</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900 font-heading" data-i18n="steps-title">In 3 Schritten zum sorgenfreien Büro</h2>
@@ -275,29 +299,51 @@
             </div>
         </section>
 
+        <!-- VIDEOS (Platzhalter — echte Aufnahmen folgen, siehe Kommentar am Dateiende) -->
+        <section class="reveal space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-navy-900 bg-navy-50 px-3.5 py-1.5 rounded-full border border-navy-100" data-i18n="video-badge">Sehen statt nur lesen</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900 font-heading" data-i18n="video-title">UNA-AI-System in Aktion</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="lift-card video-frame rounded-3xl border border-slate-800 shadow-premium relative flex items-center justify-center overflow-hidden">
+                    <div class="play-btn w-16 h-16 rounded-full bg-gold-500/90 flex items-center justify-center shadow-glow">
+                        <i class="fa-solid fa-play text-navy-950 text-xl ml-1"></i>
+                    </div>
+                    <span class="absolute bottom-4 left-4 right-4 text-white text-xs font-bold bg-navy-950/60 backdrop-blur-sm px-3 py-2 rounded-xl" data-i18n="video-1-t">Live-Demo: So funktioniert's am Bildschirm</span>
+                </div>
+                <div class="lift-card video-frame rounded-3xl border border-slate-800 shadow-premium relative flex items-center justify-center overflow-hidden">
+                    <div class="play-btn w-16 h-16 rounded-full bg-gold-500/90 flex items-center justify-center shadow-glow">
+                        <i class="fa-solid fa-play text-navy-950 text-xl ml-1"></i>
+                    </div>
+                    <span class="absolute bottom-4 left-4 right-4 text-white text-xs font-bold bg-navy-950/60 backdrop-blur-sm px-3 py-2 rounded-xl" data-i18n="video-2-t">Sladi persönlich: Wohin die Reise geht</span>
+                </div>
+            </div>
+        </section>
+
         <!-- KENNEN SIE DAS? kompakt (4 statt 8 — Fokus statt Wiederholung mit den Leistungen weiter unten) -->
-        <section class="space-y-8">
+        <section class="reveal space-y-8">
             <div class="text-center max-w-3xl mx-auto space-y-3">
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900 font-heading" data-i18n="pains-title">Kennen Sie diese Computer-Probleme?</h2>
                 <p class="text-slate-600 text-xs sm:text-sm" data-i18n="pains-sub">Sofort-Hilfe per Telefon. Ohne Fachbegriffe.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div class="glass-card p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:border-navy-800 hover:shadow-md transition space-y-2.5">
+                <div class="lift-card glass-card p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:border-navy-800 hover:shadow-md transition space-y-2.5">
                     <div class="w-10 h-10 rounded-xl bg-navy-50 text-navy-900 flex items-center justify-center"><i class="fa-solid fa-envelope-open-text"></i></div>
                     <h3 class="font-bold text-navy-900 text-sm" data-i18n="p1-t">E-Mail- & Post-Chaos</h3>
                     <p class="text-xs text-slate-600 leading-relaxed" data-i18n="p1-d">Wichtige Mails landen im Spam.</p>
                 </div>
-                <div class="glass-card p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:border-navy-800 hover:shadow-md transition space-y-2.5">
+                <div class="lift-card glass-card p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:border-navy-800 hover:shadow-md transition space-y-2.5">
                     <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-folder-minus"></i></div>
                     <h3 class="font-bold text-navy-900 text-sm" data-i18n="p3-t">Akten & Verträge unauffindbar</h3>
                     <p class="text-xs text-slate-600 leading-relaxed" data-i18n="p3-d">Ewige Suche in Ordnern.</p>
                 </div>
-                <div class="glass-card p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:border-navy-800 hover:shadow-md transition space-y-2.5">
+                <div class="lift-card glass-card p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:border-navy-800 hover:shadow-md transition space-y-2.5">
                     <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center"><i class="fa-solid fa-gauge-simple-high"></i></div>
                     <h3 class="font-bold text-navy-900 text-sm" data-i18n="p4-t">Langsamer & hängender PC</h3>
                     <p class="text-xs text-slate-600 leading-relaxed" data-i18n="p4-d">Minuten bis der PC startet.</p>
                 </div>
-                <div class="glass-card p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:border-navy-800 hover:shadow-md transition space-y-2.5">
+                <div class="lift-card glass-card p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:border-navy-800 hover:shadow-md transition space-y-2.5">
                     <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center"><i class="fa-solid fa-key"></i></div>
                     <h3 class="font-bold text-navy-900 text-sm" data-i18n="p6-t">Passwort- & Anmelde-Hürden</h3>
                     <p class="text-xs text-slate-600 leading-relaxed" data-i18n="p6-d">Zugangsdaten ständig verloren.</p>
@@ -306,43 +352,43 @@
         </section>
 
         <!-- LEISTUNGEN mit Klartext-Erklärung -->
-        <section class="space-y-8">
+        <section class="reveal space-y-8">
             <div class="text-center max-w-3xl mx-auto space-y-2">
                 <span class="text-xs font-bold uppercase tracking-wider text-navy-900 bg-navy-50 px-3.5 py-1.5 rounded-full border border-navy-100" data-i18n="srv-badge">Unsere 6 Leistungssäulen</span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-navy-900 font-heading" data-i18n="srv-title">So erleichtern wir Ihren Büro-Alltag</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
+                <div class="lift-card glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
                     <div class="w-12 h-12 rounded-xl bg-navy-50 border border-navy-100 text-navy-900 flex items-center justify-center text-xl"><i class="fa-solid fa-globe"></i></div>
                     <h3 class="text-lg font-bold text-navy-900" data-i18n="srv1-t">1. Webseiten & Google Platz 1</h3>
                     <p class="text-xs text-slate-600 leading-relaxed" data-i18n="srv1-d">Moderne Webseite ab 300 KM/€. Google-Platz 1 inklusive.</p>
                     <div class="text-[11px] bg-slate-50 p-3 rounded-xl border border-slate-200 text-slate-500">💡 <strong class="text-gold-700" data-i18n="plain-exp">Verständlich:</strong> <span data-i18n="srv1-exp">Local SEO <i>(oben stehen bei Google-Suchen in Ihrer Stadt)</i>.</span></div>
                 </div>
-                <div class="glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
+                <div class="lift-card glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
                     <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 text-amber-700 flex items-center justify-center text-xl"><i class="fa-solid fa-scale-balanced"></i></div>
                     <h3 class="text-lg font-bold text-navy-900" data-i18n="srv2-t">2. Kanzlei- & Notar-Assistenz</h3>
                     <p class="text-xs text-slate-600 leading-relaxed" data-i18n="srv2-d">Beweise filtern, Fristen automatisch im Kalender, Diktate als fertige Briefe.</p>
                     <div class="text-[11px] bg-slate-50 p-3 rounded-xl border border-slate-200 text-slate-500">💡 <strong class="text-gold-700" data-i18n="plain-exp">Verständlich:</strong> <span data-i18n="srv2-exp">KI-Analyse <i>(durchsucht Akten in Sekunden)</i>.</span></div>
                 </div>
-                <div class="glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
+                <div class="lift-card glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
                     <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-700 flex items-center justify-center text-xl"><i class="fa-brands fa-whatsapp"></i></div>
                     <h3 class="text-lg font-bold text-navy-900" data-i18n="srv3-t">3. WhatsApp & Viber Kundenservice</h3>
                     <p class="text-xs text-slate-600 leading-relaxed" data-i18n="srv3-d">Antwortet auf Anfragen, Preise & Termine — rund um die Uhr.</p>
                     <div class="text-[11px] bg-slate-50 p-3 rounded-xl border border-slate-200 text-slate-500">💡 <strong class="text-gold-700" data-i18n="plain-exp">Verständlich:</strong> <span data-i18n="srv3-exp">Messenger-Bot <i>(virtueller Empfang, immer erreichbar)</i>.</span></div>
                 </div>
-                <div class="glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
+                <div class="lift-card glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 text-indigo-700 flex items-center justify-center text-xl"><i class="fa-solid fa-microphone-lines"></i></div>
                     <h3 class="text-lg font-bold text-navy-900" data-i18n="srv4-t">4. Sprach-Rechnungen & Belege</h3>
                     <p class="text-xs text-slate-600 leading-relaxed" data-i18n="srv4-d">Rechnung aussprechen, PDF geht sofort raus.</p>
                     <div class="text-[11px] bg-slate-50 p-3 rounded-xl border border-slate-200 text-slate-500">💡 <strong class="text-gold-700" data-i18n="plain-exp">Verständlich:</strong> <span data-i18n="srv4-exp">Voice-to-Document <i>(Sprache wird zur fertigen Rechnung)</i>.</span></div>
                 </div>
-                <div class="glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
+                <div class="lift-card glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
                     <div class="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 text-sky-700 flex items-center justify-center text-xl"><i class="fa-solid fa-filter"></i></div>
                     <h3 class="text-lg font-bold text-navy-900" data-i18n="srv5-t">5. E-Mail-Filter & Sprach-Suche</h3>
                     <p class="text-xs text-slate-600 leading-relaxed" data-i18n="srv5-d">Nur wichtige Mails als Push-Nachricht.</p>
                     <div class="text-[11px] bg-slate-50 p-3 rounded-xl border border-slate-200 text-slate-500">💡 <strong class="text-gold-700" data-i18n="plain-exp">Verständlich:</strong> <span data-i18n="srv5-exp">Push-Nachrichten <i>(Sofort-Hinweis bei dringenden Mails)</i>.</span></div>
                 </div>
-                <div class="glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
+                <div class="lift-card glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
                     <div class="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 text-rose-700 flex items-center justify-center text-xl"><i class="fa-solid fa-headset"></i></div>
                     <h3 class="text-lg font-bold text-navy-900" data-i18n="srv6-t">6. Sofort-Fernhilfe per Telefon</h3>
                     <p class="text-xs text-slate-600 leading-relaxed" data-i18n="srv6-d">Anrufen, wir lösen es per Fernzugriff.</p>
@@ -351,14 +397,48 @@
             </div>
         </section>
 
+        <!-- UNTERSTÜTZTE PROGRAMME (nur real verifizierbare, weltweit bekannte Software) -->
+        <section class="reveal glass-card p-6 sm:p-8 rounded-3xl border border-slate-200/80">
+            <div class="text-center max-w-2xl mx-auto space-y-2 mb-6">
+                <span class="text-xs font-bold uppercase tracking-wider text-navy-900 bg-navy-50 px-3.5 py-1.5 rounded-full border border-navy-100" data-i18n="tools-badge">Läuft mit dem, was Sie schon haben</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-navy-900 font-heading" data-i18n="tools-title">Unterstützte Programme</h2>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="lift-card inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-700"><i class="fa-solid fa-envelope text-navy-900"></i> Outlook</span>
+                <span class="lift-card inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-700"><i class="fa-brands fa-microsoft text-navy-900"></i> Microsoft 365</span>
+                <span class="lift-card inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-700"><i class="fa-solid fa-file-word text-blue-700"></i> Word</span>
+                <span class="lift-card inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-700"><i class="fa-solid fa-file-excel text-emerald-700"></i> Excel</span>
+                <span class="lift-card inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-700"><i class="fa-solid fa-file-pdf text-rose-700"></i> Adobe / PDF</span>
+                <span class="lift-card inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-700"><i class="fa-brands fa-whatsapp text-whatsapp"></i> WhatsApp Business</span>
+                <span class="lift-card inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-700"><i class="fa-solid fa-video text-sky-700"></i> Zoom / Teams</span>
+            </div>
+        </section>
+
+        <!-- FERNZUGRIFF (TeamViewer QuickSupport — kein Installer, portable .exe) -->
+        <section class="reveal glass-card p-6 sm:p-10 rounded-3xl border border-slate-200/80">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200" data-i18n="remote-badge">Fernzugriff in 2 Minuten</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-navy-900 font-heading" data-i18n="remote-title">So sehen wir Ihren Bildschirm</h2>
+                    <p class="text-slate-600 text-sm" data-i18n="remote-sub">1. Sie rufen an. 2. Sie klicken auf den Button und öffnen die kleine Datei. Kein Installer, nichts bleibt zurück.</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <a href="https://get.teamviewer.com/quicksupport" target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-7 py-4 rounded-xl transition shadow-call btn-shimmer text-sm">
+                        <i class="fa-solid fa-desktop"></i> <span data-i18n="remote-btn">Fernzugriff starten</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- PROBLEM-MELDER / KONTAKT -->
-        <section id="problem-melder" class="scroll-mt-24">
+        <section id="problem-melder" class="reveal scroll-mt-24">
             <div class="glass-card bg-navy-950 text-white rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden border border-navy-800">
                 <div class="absolute -top-24 -right-24 w-80 h-80 bg-gold-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div class="max-w-3xl mx-auto text-center space-y-3 mb-8">
                     <span class="bg-gold-500/20 text-gold-400 border border-gold-500/30 px-4 py-1.5 rounded-full text-xs font-bold inline-flex items-center gap-2"><i class="fa-solid fa-gift"></i> <span data-i18n="w-badge">Exklusives Willkommens-Angebot</span></span>
                     <h2 class="text-2xl sm:text-4xl font-extrabold font-heading text-white" data-i18n="w-headline">Ihr 1. Projekt ist zu 100% KOSTENFREI!</h2>
+                    <p class="text-gold-400 text-xs font-bold" data-i18n="w-launch">🚀 Wir sind neu am Markt — deshalb schenken wir Ihnen den Start komplett.</p>
                     <p class="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed" data-i18n="w-sub">Am schnellsten per Anruf. Oder kurz schreiben — wir melden uns sofort.</p>
                 </div>
 
@@ -437,7 +517,7 @@
         </section>
 
         <!-- RECHNER -->
-        <section class="glass-card p-6 sm:p-10 rounded-3xl border border-slate-200/80 space-y-8">
+        <section class="reveal glass-card p-6 sm:p-10 rounded-3xl border border-slate-200/80 space-y-8">
             <div class="max-w-3xl mx-auto text-center space-y-2">
                 <span class="text-xs font-bold uppercase tracking-wider text-navy-900 bg-navy-50 px-3.5 py-1.5 rounded-full border border-navy-100" data-i18n="calc-badge">Interaktiver Büro-Rechner</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900 font-heading" data-i18n="calc-title">Wie viel Zeit & Geld sparen Sie in Ihrem Büro?</h2>
@@ -472,7 +552,7 @@
         </section>
 
         <!-- FAQ -->
-        <section class="glass-card p-6 sm:p-10 rounded-3xl border border-slate-200/80 space-y-6">
+        <section class="reveal glass-card p-6 sm:p-10 rounded-3xl border border-slate-200/80 space-y-6">
             <div class="text-center space-y-2">
                 <span class="text-xs font-bold uppercase tracking-wider text-navy-900 bg-navy-50 px-3.5 py-1.5 rounded-full border border-navy-100" data-i18n="faq-badge">Häufige Fragen</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900 font-heading" data-i18n="faq-title">Klartext-Antworten auf Ihre Bedenken</h2>
@@ -514,7 +594,13 @@
     <footer class="bg-navy-900 border-t border-navy-800 text-slate-400 py-12 text-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
             <div class="flex items-center space-x-3">
-                <div class="w-9 h-9 rounded-xl bg-gold-600 text-navy-950 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-compass"></i></div>
+                <div class="w-9 h-9 rounded-xl overflow-hidden">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                        <rect width="48" height="48" rx="14" fill="#d97706"/>
+                        <path d="M14 13v14a10 10 0 0 0 20 0V13" stroke="#080d1a" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+                        <path d="M34 8l2.2 5 5 2.2-5 2.2-2.2 5-2.2-5-5-2.2 5-2.2z" fill="#080d1a"/>
+                    </svg>
+                </div>
                 <div>
                     <div class="text-white font-bold text-sm">UNA-AI-System</div>
                     <div class="text-[11px] text-slate-400" data-i18n="footer-sub">Sorgenfreier Computer-Alltag für Kanzleien & KMU</div>
@@ -523,7 +609,11 @@
             <div class="text-center sm:text-right space-y-1">
                 <p data-i18n="footer-copy">© 2026 UNA-AI-System. Alle Rechte vorbehalten.</p>
                 <p class="text-[11px] text-slate-500" data-i18n="footer-law">100% DSGVO & Berufsgeheimnis (§ 203 StGB) konform.</p>
-                <p class="text-[11px]"><a href="datenschutz.html" class="underline hover:text-gold-400">Datenschutzerklärung</a></p>
+                <p class="text-[11px] text-slate-500">CEO Sladi Kičin</p>
+                <p class="text-[11px] flex items-center justify-center sm:justify-end gap-3">
+                    <a href="datenschutz.html" class="underline hover:text-gold-400">Datenschutzerklärung</a>
+                    <a href="gutschein.html" class="underline hover:text-gold-400">Gutschein</a>
+                </p>
                 <p class="text-[11px] text-slate-600">[Firmenname / Anschrift / Registernummer hier ergänzen — Impressumspflicht prüfen]</p>
             </div>
         </div>
@@ -561,6 +651,13 @@
                 "step-1-t": "Anrufen oder schreiben", "step-1-d": "Kurz Anliegen schildern.",
                 "step-2-t": "Wir schalten uns dazu", "step-2-d": "Ihr Bildschirm, mit Ihrer Freigabe.",
                 "step-3-t": "Problem gelöst — kostenfrei", "step-3-d": "Erste Anfrage 100% gratis.",
+                "video-badge": "Sehen statt nur lesen", "video-title": "UNA-AI-System in Aktion",
+                "video-1-t": "Live-Demo: So funktioniert's am Bildschirm", "video-2-t": "Sladi persönlich: Wohin die Reise geht",
+                "tools-badge": "Läuft mit dem, was Sie schon haben", "tools-title": "Unterstützte Programme",
+                "remote-badge": "Fernzugriff in 2 Minuten", "remote-title": "So sehen wir Ihren Bildschirm",
+                "remote-sub": "1. Sie rufen an. 2. Sie klicken auf den Button und öffnen die kleine Datei. Kein Installer, nichts bleibt zurück.",
+                "remote-btn": "Fernzugriff starten",
+                "w-launch": "🚀 Wir sind neu am Markt — deshalb schenken wir Ihnen den Start komplett.",
                 "pains-title": "Kennen Sie diese Computer-Probleme?", "pains-sub": "Sofort-Hilfe per Telefon. Ohne Fachbegriffe.",
                 "p1-t": "E-Mail- & Post-Chaos", "p1-d": "Wichtige Mails landen im Spam.",
                 "p3-t": "Akten & Verträge unauffindbar", "p3-d": "Ewige Suche in Ordnern.",
@@ -628,6 +725,13 @@
                 "step-1-t": "Pozovite ili napisite", "step-1-d": "Ukratko opisite problem.",
                 "step-2-t": "Spajamo se preko ekrana", "step-2-d": "Vas ekran, uz vasu dozvolu.",
                 "step-3-t": "Problem rijesen — besplatno", "step-3-d": "Prvi upit 100% besplatan.",
+                "video-badge": "Gledajte umjesto samo citajte", "video-title": "UNA-AI-System u akciji",
+                "video-1-t": "Live-demo: Kako funkcionise na ekranu", "video-2-t": "Sladi licno: Kuda idemo dalje",
+                "tools-badge": "Radi sa onim sto vec imate", "tools-title": "Podrzani programi",
+                "remote-badge": "Pristup na daljinu za 2 minuta", "remote-title": "Ovako vidimo vas ekran",
+                "remote-sub": "1. Pozovete nas. 2. Kliknete na dugme i otvorite malu datoteku. Bez instalacije, nista ne ostaje.",
+                "remote-btn": "Pokreni pristup na daljinu",
+                "w-launch": "🚀 Novi smo na trzistu — zato vam poklanjamo prvi start u potpunosti.",
                 "pains-title": "Imate li ove probleme na racunaru?", "pains-sub": "Odmah pomoc preko telefona. Bez strucnih izraza.",
                 "p1-t": "E-Mail i postanski haos", "p1-d": "Vazne poruke zavrsavaju u spamu.",
                 "p3-t": "Nije moguce naci spise", "p3-d": "Vjecna potraga po folderima.",
@@ -826,7 +930,24 @@
             }
         }
 
-        window.onload = function () { updateCalculator(); };
+        function initScrollReveal() {
+            const items = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                items.forEach(el => el.classList.add('in-view'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            items.forEach(el => observer.observe(el));
+        }
+
+        window.onload = function () { updateCalculator(); initScrollReveal(); };
     </script>
 
     <!--
@@ -846,6 +967,13 @@
            sendViaEmail() zusätzlich per fetch() an den Webhook senden, damit Leads zentral erfasst werden.
         8. Markenname am 07.08.2026 von "Una-Pilot / Büro-Digitallotse" auf "UNA-AI-System" geändert (Sladis
            Entscheidung) — Texte gleichzeitig gekürzt/verknappt.
+        9. VIDEO-PLÄTZE: Die zwei Platzhalter-Kacheln in der Sektion "VIDEOS" (Klasse .video-frame) durch
+           echtes Material ersetzen, sobald aufgenommen — z. B. das <div class="play-btn">...</div>-Icon
+           entfernen und stattdessen ein <video controls> oder einen YouTube/Vimeo-<iframe> einsetzen.
+        10. Fernzugriff-Button verlinkt auf TeamViewer QuickSupport (get.teamviewer.com/quicksupport) —
+            kein Installer, eine portable .exe, empfohlen weil kein Download-Rückstand bleibt.
+        11. gutschein.html ist eine eigenständige Datei daneben — Web-Version + Druck-/PDF-Version über den
+            Browser-Druckdialog (kein eigenes PDF-Bibliothek-Tool verwendet, siehe Kommentar dort).
     -->
 </body>
 </html>
