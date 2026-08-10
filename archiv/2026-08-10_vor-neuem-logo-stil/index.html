@@ -25,8 +25,6 @@
                     colors: {
                         navy: { 50: '#f0f4f9', 100: '#dbe5f0', 800: '#1e293b', 900: '#0f172a', 950: '#080d1a' },
                         gold: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
-                        electric: { 400: '#a78bfa', 500: '#6d5ef2', 600: '#4f3dd6', 700: '#3f2fae' },
-                        cyan: { 300: '#67e8f9', 400: '#22d3ee', 500: '#06b6d4' },
                         viber: '#7360f2', viberHover: '#5f4cd0',
                         whatsapp: '#25d366', whatsappHover: '#1ebc57'
                     },
@@ -59,7 +57,7 @@
         input[type=range] { accent-color: #d97706; }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease-in-out, opacity 0.3s ease; opacity: 0; }
         .faq-answer.open { max-height: 500px; opacity: 1; }
-        .gradient-text { background: linear-gradient(135deg, #0f172a 0%, #4f3dd6 55%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-text { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #d97706 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         @keyframes pulseCall { 0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); } 50% { box-shadow: 0 0 0 10px rgba(16,185,129,0); } }
         .call-pulse { animation: pulseCall 2.2s infinite; }
 
@@ -95,18 +93,18 @@
         .aurora-bg span { position: absolute; border-radius: 9999px; filter: blur(90px); opacity: 0.32; animation: auroraDrift 26s ease-in-out infinite; }
         .aurora-bg span:nth-child(1) { width: 46vw; height: 46vw; background: #1e3a8a; top: -14%; left: -12%; }
         .aurora-bg span:nth-child(2) { width: 40vw; height: 40vw; background: #d97706; top: 25%; right: -14%; animation-duration: 31s; animation-delay: -8s; }
-        .aurora-bg span:nth-child(3) { width: 38vw; height: 38vw; background: #6d5ef2; bottom: -16%; left: 22%; animation-duration: 34s; animation-delay: -17s; }
+        .aurora-bg span:nth-child(3) { width: 38vw; height: 38vw; background: #059669; bottom: -16%; left: 22%; animation-duration: 34s; animation-delay: -17s; }
         @keyframes auroraDrift { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(5%, 8%) scale(1.08); } 66% { transform: translate(-6%, -4%) scale(0.96); } }
 
         /* Spotlight + 3D-Tilt auf Karten (JS setzt --mx/--my/transform) */
         .tilt-card { position: relative; will-change: transform; transition: box-shadow 0.35s ease; }
         .tilt-card::before {
             content: ''; position: absolute; inset: 0; border-radius: inherit; z-index: 1; pointer-events: none;
-            background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(109,94,242,0.24), transparent 70%);
+            background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(217,119,6,0.22), transparent 70%);
             opacity: 0; transition: opacity 0.4s ease; mix-blend-mode: overlay;
         }
         .tilt-card:hover::before { opacity: 1; }
-        .tilt-card:hover { box-shadow: 0 0 0 1px rgba(109,94,242,0.28), 0 20px 50px -12px rgba(34,211,238,0.3); }
+        .tilt-card:hover { box-shadow: 0 0 0 1px rgba(217,119,6,0.3), 0 20px 50px -12px rgba(217,119,6,0.35); }
 
         /* Magnetische Buttons (JS verschiebt leicht Richtung Maus) */
         .magnetic { transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
@@ -122,7 +120,7 @@
         }
 
         /* Rotierender Glow-Ring hinter der Hero-Vergleichskarte */
-        .orbit-ring { position: absolute; inset: -10%; z-index: -1; border-radius: 9999px; background: conic-gradient(from 0deg, rgba(109,94,242,0.35), rgba(34,211,238,0.3), rgba(217,119,6,0.22)); filter: blur(55px); opacity: 0.65; animation: orbitSpin 20s linear infinite; }
+        .orbit-ring { position: absolute; inset: -10%; z-index: -1; border-radius: 9999px; background: conic-gradient(from 0deg, rgba(217,119,6,0.35), rgba(56,189,248,0.28), rgba(217,119,6,0.35)); filter: blur(55px); opacity: 0.65; animation: orbitSpin 20s linear infinite; }
         @keyframes orbitSpin { to { transform: rotate(360deg); } }
 
         /* Feines Punktraster im Hero fuer Tech-Textur */
@@ -206,7 +204,7 @@
                     <i class="fa-solid fa-phone text-sm"></i>
                     <span class="hidden sm:inline" data-i18n="nav-call">Anrufen</span>
                 </a>
-                <a href="https://wa.me/38765242437?text=Zdravo%20UNA-AI-System%2C%20potrebna%20mi%20je%20pomo%C4%87" target="_blank" rel="noopener" class="bg-whatsapp hover:bg-whatsappHover text-white text-xs font-bold px-3.5 py-2.5 rounded-xl transition shadow-whatsapp flex items-center gap-2 btn-shimmer" aria-label="WhatsApp Nachricht">
+                <a href="https://wa.me/38765242437?text=Zdravo%20UNA-AI-System%2C%20potrebna%20mi%20je%20pomoc" target="_blank" rel="noopener" class="bg-whatsapp hover:bg-whatsappHover text-white text-xs font-bold px-3.5 py-2.5 rounded-xl transition shadow-whatsapp flex items-center gap-2 btn-shimmer" aria-label="WhatsApp Nachricht">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span class="hidden sm:inline" data-i18n="nav-wa">WhatsApp</span>
                 </a>
@@ -267,8 +265,8 @@
                         <i class="fa-solid fa-phone"></i>
                         <span data-i18n="hero-cta-call">Jetzt anrufen: +387 65 242 437</span>
                     </a>
-                    <a href="#problem-melder" class="bg-gradient-to-r from-navy-900 via-electric-600 to-navy-900 hover:from-navy-800 hover:via-electric-500 hover:to-navy-950 text-white font-extrabold px-6 py-4 rounded-xl transition shadow-xl shadow-electric-600/25 flex items-center gap-3 text-sm btn-shimmer">
-                        <i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i>
+                    <a href="#problem-melder" class="bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 hover:from-navy-800 hover:to-navy-950 text-white font-extrabold px-6 py-4 rounded-xl transition shadow-xl shadow-navy-900/15 flex items-center gap-3 text-sm btn-shimmer">
+                        <i class="fa-solid fa-wand-magic-sparkles text-gold-400"></i>
                         <span data-i18n="hero-cta-main">Gratis-Projekt anfragen</span>
                     </a>
                     <a href="viber://chat?number=%2B38765242437" target="_blank" rel="noopener" class="bg-viber hover:bg-viberHover text-white p-4 rounded-xl transition shadow-viber hover:scale-105" title="Viber" aria-label="Viber Nachricht">
@@ -314,7 +312,7 @@
                             <p class="text-slate-600" data-i18n="ca2-d">Hosting, Design & Google-Ranking inklusive.</p>
                         </div>
                         <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-2xl space-y-1">
-                            <div class="font-bold text-emerald-800 flex items-center gap-2"><i class="fa-solid fa-headset"></i> <span data-i18n="ca3-t">Sofortige Fernhilfe</span></div>
+                            <div class="font-bold text-emerald-800 flex items-center gap-2"><i class="fa-solid fa-headset"></i> <span data-i18n="ca3-t">Sofortige Remote-Fernhilfe</span></div>
                             <p class="text-slate-600" data-i18n="ca3-d">Anrufen – wir lösen es live.</p>
                         </div>
                     </div>
@@ -367,7 +365,7 @@
                 <!-- una-ai.shop -->
                 <div class="lift-card glass-card p-6 rounded-3xl border border-slate-200/80 text-center space-y-3">
                     <div class="relative w-40 h-40 mx-auto eco-float" style="animation-delay:0s">
-                        <div class="absolute inset-3 rounded-full eco-glow" style="background:radial-gradient(circle, rgba(34,211,238,0.5), rgba(109,94,242,0.4) 60%, transparent 75%)"></div>
+                        <div class="absolute inset-3 rounded-full eco-glow" style="background:radial-gradient(circle, rgba(16,185,129,0.5), rgba(168,85,247,0.35) 60%, transparent 75%)"></div>
                         <img src="assets/logo-ai.png" alt="una-ai.shop Logo" class="relative w-full h-full object-contain drop-shadow-xl eco-breathe">
                     </div>
                     <div class="pt-1">
@@ -503,7 +501,7 @@
                 <div class="lift-card glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
                     <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-700 flex items-center justify-center text-xl"><i class="fa-brands fa-whatsapp"></i></div>
                     <h3 class="text-lg font-bold text-navy-900" data-i18n="srv3-t">3. WhatsApp & Viber Kundenservice</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed" data-i18n="srv3-d">Beantwortet Anfragen zu Preisen & Terminen — rund um die Uhr.</p>
+                    <p class="text-xs text-slate-600 leading-relaxed" data-i18n="srv3-d">Antwortet auf Anfragen, Preise & Termine — rund um die Uhr.</p>
                     <div class="text-[11px] bg-slate-50 p-3 rounded-xl border border-slate-200 text-slate-500">💡 <strong class="text-gold-700" data-i18n="plain-exp">Verständlich:</strong> <span data-i18n="srv3-exp">Messenger-Bot <i>(virtueller Empfang, immer erreichbar)</i>.</span></div>
                 </div>
                 <div class="lift-card glass-card border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-navy-800/40 transition">
@@ -583,11 +581,11 @@
                     <div class="space-y-2">
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider" data-i18n="w-step1">1. Anliegen wählen:</label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                            <button type="button" onclick="selectPresetOption(this, 'E-Mail & Post-Chaos ordnen', 'Urediti poštu i e-mailove')" class="preset-btn p-3 bg-navy-900/80 border border-slate-700 hover:border-gold-500 text-left rounded-xl transition text-xs font-medium text-slate-200 flex items-center justify-between">
+                            <button type="button" onclick="selectPresetOption(this, 'E-Mail & Post-Chaos ordnen', 'Urediti postu i e-mailove')" class="preset-btn p-3 bg-navy-900/80 border border-slate-700 hover:border-gold-500 text-left rounded-xl transition text-xs font-medium text-slate-200 flex items-center justify-between">
                                 <span><i class="fa-solid fa-envelope text-gold-400 mr-2"></i><span data-i18n="opt1">E-Mail & Post-Chaos ordnen</span></span>
                                 <i class="fa-solid fa-circle-check check-icon text-transparent"></i>
                             </button>
-                            <button type="button" onclick="selectPresetOption(this, 'Drucker & Scans einrichten', 'Podešavanje štampača i skenera')" class="preset-btn p-3 bg-navy-900/80 border border-slate-700 hover:border-gold-500 text-left rounded-xl transition text-xs font-medium text-slate-200 flex items-center justify-between">
+                            <button type="button" onclick="selectPresetOption(this, 'Drucker & Scans einrichten', 'Podesavanje stampaca i skenera')" class="preset-btn p-3 bg-navy-900/80 border border-slate-700 hover:border-gold-500 text-left rounded-xl transition text-xs font-medium text-slate-200 flex items-center justify-between">
                                 <span><i class="fa-solid fa-print text-emerald-400 mr-2"></i><span data-i18n="opt2">Drucker & Scans ordnen</span></span>
                                 <i class="fa-solid fa-circle-check check-icon text-transparent"></i>
                             </button>
@@ -772,7 +770,7 @@
                 "cb3-t": "Hilflos bei PC-Problemen", "cb3-d": "Niemand hilft, wenn der PC streikt.",
                 "ca1-t": "Ein gesprochener Satz", "ca1-d": "„Zeige mir Vertrag Müller“ – sofort geöffnet.",
                 "ca2-t": "Webseite ab ca. 300 KM/€ im Jahr", "ca2-d": "Hosting, Design & Google-Ranking inklusive.",
-                "ca3-t": "Sofortige Fernhilfe", "ca3-d": "Anrufen – wir lösen es live.",
+                "ca3-t": "Sofortige Remote-Fernhilfe", "ca3-d": "Anrufen – wir lösen es live.",
                 "trust-title": "Warum Kanzleien uns vertrauen", "trust-sub": "Keine leeren Versprechen.",
                 "trust-1-t": "Kein Callcenter", "trust-1-d": "Ein fester Ansprechpartner, kein Callcenter.",
                 "trust-2-t": "Transparente Preise", "trust-2-d": "Keine versteckten Kosten.",
@@ -800,7 +798,7 @@
                 "srv-badge": "Unsere 6 Leistungssäulen", "srv-title": "So erleichtern wir Ihren Büro-Alltag",
                 "srv1-t": "1. Webseiten & Google Platz 1", "srv1-d": "Moderne Webseite ab 300 KM/€. Google-Platz 1 inklusive.",
                 "srv2-t": "2. Kanzlei- & Notar-Assistenz", "srv2-d": "Beweise filtern, Fristen automatisch im Kalender, Diktate als fertige Briefe.",
-                "srv3-t": "3. WhatsApp & Viber Kundenservice", "srv3-d": "Beantwortet Anfragen zu Preisen & Terminen — rund um die Uhr.",
+                "srv3-t": "3. WhatsApp & Viber Kundenservice", "srv3-d": "Antwortet auf Anfragen, Preise & Termine — rund um die Uhr.",
                 "srv4-t": "4. Sprach-Rechnungen & Belege", "srv4-d": "Rechnung aussprechen, PDF geht sofort raus.",
                 "srv5-t": "5. E-Mail-Filter & Sprach-Suche", "srv5-d": "Nur wichtige Mails als Push-Nachricht.",
                 "srv6-t": "6. Sofort-Fernhilfe per Telefon", "srv6-d": "Anrufen, wir lösen es per Fernzugriff.",
@@ -835,82 +833,82 @@
                 "footer-sub": "Sorgenfreier Computer-Alltag für Kanzleien & KMU", "footer-copy": "© 2026 UNA-AI-System. Alle Rechte vorbehalten.", "footer-law": "100% DSGVO & Berufsgeheimnis (§ 203 StGB) konform."
             },
             bs: {
-                "top-status": "Podrška Aktivna", "top-banner-text": "📞 Odmah dostupni: +387 65 242 437", "top-guarantee": "🛡️ 1. Projekat BESPLATAN", "top-law-guarantee": "Usaglašeno sa Zakonom o zaštiti ličnih podataka BiH",
-                "nav-tagline": "Vaš digitalni asistent", "nav-call": "Pozovi", "nav-wa": "WhatsApp",
+                "top-status": "Podrska Aktivna", "top-banner-text": "📞 Odmah dostupni: +387 65 242 437", "top-guarantee": "🛡️ 1. Projekat BESPLATAN", "top-law-guarantee": "Usaglaseno sa Zakonom o zastiti licnih podataka BiH",
+                "nav-tagline": "Vas digitalni asistent", "nav-call": "Pozovi", "nav-wa": "WhatsApp",
                 "hero-badge": "Za kancelarije, notare i firme",
-                "hero-title-1": "Bezbrižna svakodnevnica na računaru.", "hero-title-2": "Govorite umjesto traženja.",
-                "hero-subtext": "Preuzimamo vaše kompjuterske probleme – lično i bez teških izraza. Jedan poziv je dovoljan.",
-                "pillar-1-t": "Podrška preko telefona", "pillar-1-d": "Odmah dostupni kod problema",
+                "hero-title-1": "Bezbrisna svakodnevnica na racunaru.", "hero-title-2": "Govorite umjesto trazenja.",
+                "hero-subtext": "Preuzimamo vase kompjuterske probleme – licno i bez teskih izraza. Jedan poziv je dovoljan.",
+                "pillar-1-t": "Podrska preko telefona", "pillar-1-d": "Odmah dostupni kod problema",
                 "pillar-2-t": "1. Projekat BESPLATAN", "pillar-2-d": "Bez rizika, bez ugovora",
                 "pillar-3-t": "Web stranice od cca. 300 KM/€", "pillar-3-d": "Umjesto 10.000 € u agencijama",
-                "hero-cta-call": "Pozovite odmah: +387 65 242 437", "hero-cta-main": "Besplatan projekat zatraži",
+                "hero-cta-call": "Pozovite odmah: +387 65 242 437", "hero-cta-main": "Besplatan projekat zatrazi",
                 "comp-title": "Prije / Poslije", "comp-before-btn": "Dosada", "comp-after-btn": "Sa nama",
                 "cb1-t": "Duga potraga za spisima", "cb1-d": "15-20 minuta za jedan dokument.",
-                "cb2-t": "Skupe agencijske stranice", "cb2-d": "Agencije traže 10.000 €+ za jednostavne stranice.",
-                "cb3-t": "Sami kod problema na PC-u", "cb3-d": "Niko ne pomaže kad računar otkaže.",
-                "ca1-t": "Jedna izgovorena rečenica", "ca1-d": "„Prikaži ugovor Müller“ – odmah otvoreno.",
-                "ca2-t": "Web stranica od cca. 300 KM/€ godišnje", "ca2-d": "Hosting, dizajn i Google pozicija uključeni.",
-                "ca3-t": "Brza podrška na daljinu", "ca3-d": "Pozovite – rješavamo uživo.",
-                "trust-title": "Zašto nam kancelarije vjeruju", "trust-sub": "Bez praznih obećanja.",
+                "cb2-t": "Skupe agencijske stranice", "cb2-d": "Agencije traze 10.000 €+ za jednostavne stranice.",
+                "cb3-t": "Sami kod problema na PC-u", "cb3-d": "Niko ne pomaze kad racunar otkaze.",
+                "ca1-t": "Jedna izgovorena recenica", "ca1-d": "„Prikazi ugovor Muller“ – odmah otvoreno.",
+                "ca2-t": "Web stranica od cca. 300 KM/€ godisnje", "ca2-d": "Hosting, dizajn i Google pozicija ukljuceni.",
+                "ca3-t": "Brza podrska na daljinu", "ca3-d": "Pozovite – rjesavamo uzivo.",
+                "trust-title": "Zasto nam kancelarije vjeruju", "trust-sub": "Bez praznih obecanja.",
                 "trust-1-t": "Bez pozivnog centra", "trust-1-d": "Stalna kontakt osoba, bez pozivnog centra.",
-                "trust-2-t": "Transparentne cijene", "trust-2-d": "Bez skrivenih troškova.",
-                "trust-3-t": "Profesionalna tajna zaštićena", "trust-3-d": "Usaglašeno sa GDPR i profesionalnom tajnom.",
-                "eco-badge": "Dio rastućeg ekosistema", "eco-title": "Više od jedne stranice — UNA Group",
-                "eco-sub": "Tri specijalizirane platforme, jedan zajednički cilj: da vam vratimo vrijeme.",
+                "trust-2-t": "Transparentne cijene", "trust-2-d": "Bez skrivenih troskova.",
+                "trust-3-t": "Profesionalna tajna zasticena", "trust-3-d": "Usaglaseno sa GDPR i profesionalnom tajnom.",
+                "eco-badge": "Dio rastuceg ekosistema", "eco-title": "Vise od jedne stranice — UNA Group",
+                "eco-sub": "Tri specijalizirane platforme, jedan zajednicki cilj: da vam vratimo vrijeme.",
                 "eco-shop-tag": "Usluge — ova stranica", "eco-here": "✓ Vi ste ovdje",
-                "eco-agent-tag": "AI-agenti za vašu firmu", "eco-group-tag": "Proizvodi i više", "eco-soon": "Uskoro dostupno",
-                "steps-badge": "Ovako jednostavno ide", "steps-title": "U 3 koraka do bezbrižne kancelarije",
-                "step-1-t": "Pozovite ili napišite", "step-1-d": "Ukratko opisite problem.",
-                "step-2-t": "Spajamo se preko ekrana", "step-2-d": "Vaš ekran, uz vašu dozvolu.",
-                "step-3-t": "Problem riješen — besplatno", "step-3-d": "Prvi upit 100% besplatan.",
-                "video-badge": "Gledajte umjesto samo čitajte", "video-title": "UNA-AI-System u akciji",
-                "video-1-t": "Live-demo: Kako funkcioniše na ekranu", "video-2-t": "Sladi lično: Kuda idemo dalje",
-                "tools-badge": "Radi sa onim što već imate", "tools-title": "Podržani programi",
-                "remote-badge": "Pristup na daljinu za 2 minuta", "remote-title": "Ovako vidimo vaš ekran",
-                "remote-sub": "1. Pozovete nas. 2. Kliknete na dugme i otvorite malu datoteku. Bez instalacije, ništa ne ostaje.",
+                "eco-agent-tag": "KI-agenti za vasu firmu", "eco-group-tag": "Proizvodi i vise", "eco-soon": "Uskoro dostupno",
+                "steps-badge": "Ovako jednostavno ide", "steps-title": "U 3 koraka do bezbrisne kancelarije",
+                "step-1-t": "Pozovite ili napisite", "step-1-d": "Ukratko opisite problem.",
+                "step-2-t": "Spajamo se preko ekrana", "step-2-d": "Vas ekran, uz vasu dozvolu.",
+                "step-3-t": "Problem rijesen — besplatno", "step-3-d": "Prvi upit 100% besplatan.",
+                "video-badge": "Gledajte umjesto samo citajte", "video-title": "UNA-AI-System u akciji",
+                "video-1-t": "Live-demo: Kako funkcionise na ekranu", "video-2-t": "Sladi licno: Kuda idemo dalje",
+                "tools-badge": "Radi sa onim sto vec imate", "tools-title": "Podrzani programi",
+                "remote-badge": "Pristup na daljinu za 2 minuta", "remote-title": "Ovako vidimo vas ekran",
+                "remote-sub": "1. Pozovete nas. 2. Kliknete na dugme i otvorite malu datoteku. Bez instalacije, nista ne ostaje.",
                 "remote-btn": "Pokreni pristup na daljinu",
-                "w-launch": "🚀 Novi smo na tržištu — zato vam poklanjamo prvi start u potpunosti.",
-                "pains-title": "Imate li ove probleme na računaru?", "pains-sub": "Odmah pomoć preko telefona. Bez stručnih izraza.",
-                "p1-t": "E-Mail i poštanski haos", "p1-d": "Važne poruke završavaju u spamu.",
-                "p3-t": "Nije moguće naći spise", "p3-d": "Vječna potraga po folderima.",
-                "p4-t": "Spor i usporen računar", "p4-d": "Minute do pokretanja računara.",
+                "w-launch": "🚀 Novi smo na trzistu — zato vam poklanjamo prvi start u potpunosti.",
+                "pains-title": "Imate li ove probleme na racunaru?", "pains-sub": "Odmah pomoc preko telefona. Bez strucnih izraza.",
+                "p1-t": "E-Mail i postanski haos", "p1-d": "Vazne poruke zavrsavaju u spamu.",
+                "p3-t": "Nije moguce naci spise", "p3-d": "Vjecna potraga po folderima.",
+                "p4-t": "Spor i usporen racunar", "p4-d": "Minute do pokretanja racunara.",
                 "p6-t": "Zaboravljene lozinke", "p6-d": "Pristupni podaci stalno izgubljeni.",
-                "srv-badge": "Naših 6 stubova usluga", "srv-title": "Ovako olakšavamo vaš rad na računaru",
-                "srv1-t": "1. Web stranice i Google pozicija 1", "srv1-d": "Moderna stranica od 300 KM/€. Google pozicija 1 uključena.",
-                "srv2-t": "2. Podrška za advokate i notare", "srv2-d": "Filtriranje dokaza, automatski rokovi u kalendaru, diktati kao gotovi dopisi.",
-                "srv3-t": "3. WhatsApp i Viber podrška klijentima", "srv3-d": "Odgovara na upite, cijene i termine — 24/7.",
-                "srv4-t": "4. Glasovni računi i računovodstvo", "srv4-d": "Izdiktirajte račun, PDF ide odmah.",
-                "srv5-t": "5. E-Mail filter i Glasovna pretraga", "srv5-d": "Samo važne poruke kao obavještenje.",
-                "srv6-t": "6. Odmah dostupna podrška preko telefona", "srv6-d": "Nazovite, rješavamo preko ekrana.",
+                "srv-badge": "Nasih 6 stubova usluga", "srv-title": "Ovako olaksavamo vas rad na racunaru",
+                "srv1-t": "1. Web stranice i Google pozicija 1", "srv1-d": "Moderna stranica od 300 KM/€. Google pozicija 1 ukljucena.",
+                "srv2-t": "2. Podrska za advokate i notare", "srv2-d": "Filtriranje dokaza, automatski rokovi u kalendaru, diktati kao gotovi dopisi.",
+                "srv3-t": "3. WhatsApp i Viber podrska klijentima", "srv3-d": "Odgovara na upite, cijene i termine — 24/7.",
+                "srv4-t": "4. Glasovni racuni i racunovodstvo", "srv4-d": "Izdiktirajte racun, PDF ide odmah.",
+                "srv5-t": "5. E-Mail filter i Glasovna pretraga", "srv5-d": "Samo vazne poruke kao obavjestenje.",
+                "srv6-t": "6. Odmah dostupna podrska preko telefona", "srv6-d": "Nazovite, rjesavamo preko ekrana.",
                 "plain-exp": "Jednostavno:",
-                "srv1-exp": "Local SEO (na vrhu Google pretrage u vašem gradu).",
+                "srv1-exp": "Local SEO (na vrhu Google pretrage u vasem gradu).",
                 "srv2-exp": "AI-Analiza (pregleda spise u sekundi).",
                 "srv3-exp": "Messenger-Bot (virtuelni recepcionar, uvijek dostupan).",
-                "srv4-exp": "Voice-to-Document (govor postaje gotov račun).",
-                "srv5-exp": "Push-obavještenja (odmah kod hitnih mailova).",
-                "srv6-exp": "Remote-Support (pomoć bez dolaska).",
-                "w-badge": "Ekskluzivna ponuda dobrodošlice", "w-headline": "Vaš 1. projekat je 100% BESPLATAN!",
-                "w-sub": "Najbrže pozivom. Ili ukratko napišite — javljamo se odmah.",
+                "srv4-exp": "Voice-to-Document (govor postaje gotov racun).",
+                "srv5-exp": "Push-obavjestenja (odmah kod hitnih mailova).",
+                "srv6-exp": "Remote-Support (pomoc bez dolaska).",
+                "w-badge": "Ekskluzivna ponuda dobrodoslice", "w-headline": "Vas 1. projekat je 100% BESPLATAN!",
+                "w-sub": "Najbrze pozivom. Ili ukratko napisite — javljamo se odmah.",
                 "w-call-btn": "Pozovite odmah: +387 65 242 437",
                 "w-step1": "1. Izaberite temu:",
-                "opt1": "Urediti poštu i e-mailove", "opt2": "Podesiti štampač i skenere", "opt3": "Filtrirati dokaze u spisima", "opt4": "Nova web stranica i Google pozicija 1",
+                "opt1": "Urediti postu i e-mailove", "opt2": "Podesiti stampac i skenere", "opt3": "Filtrirati dokaze u spisima", "opt4": "Nova web stranica i Google pozicija 1",
                 "w-step2": "2. Ukratko opisite:",
                 "w-name-lbl": "Ime / Kancelarija / Firma:", "w-contact-lbl": "E-Mail ili Telefon:",
-                "w-btn-wa": "Pošalji preko WhatsApp-a", "w-btn-mail": "Pošalji preko E-Maila",
-                "w-consent": "Slažem se da se moji podaci koriste za obradu upita. <a href='datenschutz.html' target='_blank' class='underline hover:text-gold-400'>Politika privatnosti</a>",
+                "w-btn-wa": "Posalji preko WhatsApp-a", "w-btn-mail": "Posalji preko E-Maila",
+                "w-consent": "Slazem se da se moji podaci koriste za obradu upita. <a href='datenschutz.html' target='_blank' class='underline hover:text-gold-400'>Politika privatnosti</a>",
                 "w-guarantee": "🔒 100% povjerljivo i bez obaveze.",
-                "fb-title": "Poslano!", "fb-desc": "Vaš upit je zaprimljen. Javljamo se uskoro.",
-                "calc-badge": "Interaktivni kalkulator", "calc-title": "Koliko vremena i novca štedite u vašoj kancelariji?",
+                "fb-title": "Poslano!", "fb-desc": "Vas upit je zaprimljen. Javljamo se uskoro.",
+                "calc-badge": "Interaktivni kalkulator", "calc-title": "Koliko vremena i novca stedite u vasoj kancelariji?",
                 "calc-sub": "Izaberite broj radnika i dnevne sate papirologije:",
                 "calc-s1-lbl": "Radnika u kancelariji:", "calc-s2-lbl": "Sati papirologije dnevno:",
-                "calc-res-lbl": "Vaša procijenjena ušteda mjesečno:", "calc-res-time-lbl": "Slobodno radno vrijeme", "calc-res-money-lbl": "Manji troškovi biroa",
-                "calc-note": "💡 Zasnovano na 30–40% uštede kod sličnih biroa.",
-                "faq-badge": "Česta pitanja", "faq-title": "Jasni odgovori na vaša pitanja",
-                "faq1-q": "Moram li obrisati svoje programe (Outlook, Word itd.)?", "faq1-a": "Ne. Radimo sa vašim postojećim programima.",
-                "faq2-q": "Koliko je sigurna pomoć na daljinu preko ekrana?", "faq2-a": "100% usaglašeno sa GDPR. Početak samo uz vašu dozvolu.",
-                "faq3-q": "Zašto su vaše web stranice tako povoljne?", "faq3-a": "Moderni alati štede vrijeme — tu uštedu prenosimo na vas.",
+                "calc-res-lbl": "Vasa procijenjena usteda mjesecno:", "calc-res-time-lbl": "Slobodno radno vrijeme", "calc-res-money-lbl": "Manji troskovi biroa",
+                "calc-note": "💡 Zasnovano na 30–40% ustede kod slicnih biroa.",
+                "faq-badge": "Cesta pitanja", "faq-title": "Jasni odgovori na vasa pitanja",
+                "faq1-q": "Moram li obrisati svoje programe (Outlook, Word itd.)?", "faq1-a": "Ne. Radimo sa vasim postojecim programima.",
+                "faq2-q": "Koliko je sigurna pomoc na daljinu preko ekrana?", "faq2-a": "100% usaglaseno sa GDPR. Pocetak samo uz vasu dozvolu.",
+                "faq3-q": "Zasto su vase web stranice tako povoljne?", "faq3-a": "Moderni alati stede vrijeme — tu ustedu prenosimo na vas.",
                 "faq4-q": "Postoji li ugovorna obaveza za 1. projekat?", "faq4-a": "Ne. 1. projekat je 100% besplatan, bez obaveze.",
-                "footer-sub": "Bezbrižna svakodnevnica na računaru za kancelarije i firme", "footer-copy": "© 2026 UNA-AI-System. Sva prava zadržana.", "footer-law": "100% Usaglašeno sa Zakonom o zaštiti ličnih podataka BiH i profesionalnom tajnom."
+                "footer-sub": "Bezbrisna svakodnevnica na racunaru za kancelarije i firme", "footer-copy": "© 2026 UNA-AI-System. Sva prava zadrzana.", "footer-law": "100% Usaglaseno sa Zakonom o zastiti licnih podataka BiH i profesionalnom tajnom."
             }
         };
 
@@ -933,7 +931,7 @@
             const inputArea = document.getElementById('problem-input');
             if (inputArea) {
                 inputArea.placeholder = lang === 'bs'
-                    ? "Npr.: Naš štampač ne radi nakon ažuriranja i ne možemo naći stare račune..."
+                    ? "Npr.: Nas stampac ne radi nakon azuriranja i ne mozemo naci stare racune..."
                     : "Z. B.: Unser Drucker reagiert seit dem letzten Update nicht mehr richtig...";
             }
 
@@ -1067,7 +1065,7 @@
             const name = document.getElementById('client-name').value.trim();
             const contact = document.getElementById('client-contact').value.trim();
             if (!preset) {
-                alert(currentLanguage === 'bs' ? "Molimo unesite vaš opis problema." : "Bitte beschreiben Sie kurz Ihr Anliegen.");
+                alert(currentLanguage === 'bs' ? "Molimo unesite vas opis problema." : "Bitte beschreiben Sie kurz Ihr Anliegen.");
                 return null;
             }
             const lines = currentLanguage === 'bs'
