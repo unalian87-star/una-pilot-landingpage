@@ -1,0 +1,516 @@
+/**
+ * ============================================================================
+ * CONSENT BANNER STYLING
+ * ============================================================================
+ * DSGVO-konformes, ansprechendes Cookie-Banner
+ * Mit glasomorphem Design, responsive und barrierefrei
+ * ============================================================================
+ */
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Banner Container & Overlay */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+#consent-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  /* WICHTIG: index.html hat #lang-gate (Sprachauswahl) auf z-index: 200 und
+     #scroll-progress auf z-index: 300. Bewusst darunter gehalten (190), damit
+     der Cookie-Banner NICHT vor der Sprachauswahl aufpoppt — er wird erst
+     sichtbar, sobald #lang-gate entfernt wurde. Bei Änderungen an den
+     z-index-Werten in index.html hier gegenprüfen. */
+  z-index: 190;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  animation: slideInDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Overlay-Element (für Close-on-outside) */
+.consent-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Main Content */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+.consent-banner-content {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.1);
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #1e293b;
+}
+
+/* Scrollbar-Styling */
+.consent-banner-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.consent-banner-content::-webkit-scrollbar-track {
+  background: rgba(226, 232, 240, 0.3);
+  border-radius: 10px;
+}
+
+.consent-banner-content::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 10px;
+}
+
+.consent-banner-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Header */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+.consent-banner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 16px 24px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+  gap: 16px;
+}
+
+.consent-banner-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: #0f172a;
+  letter-spacing: -0.3px;
+}
+
+.consent-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: #64748b;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.consent-close-btn:hover {
+  background: rgba(15, 23, 42, 0.05);
+  color: #0f172a;
+}
+
+.consent-close-btn:active {
+  transform: scale(0.95);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Body */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+.consent-banner-body {
+  padding: 20px 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.consent-intro {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  color: #475569;
+}
+
+.consent-footer {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 8px 0 0 0;
+  color: #64748b;
+}
+
+.consent-footer a {
+  color: #b45309;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.consent-footer a:hover {
+  color: #d97706;
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Cookie Choices / Checkboxes */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+.consent-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.consent-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(15, 23, 42, 0.02);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.consent-choice:hover:not(.essential) {
+  background: rgba(15, 23, 42, 0.05);
+  border-color: rgba(79, 61, 214, 0.3);
+}
+
+.consent-choice.essential {
+  background: rgba(79, 61, 214, 0.08);
+  border-color: rgba(79, 61, 214, 0.2);
+  cursor: default;
+}
+
+/* Checkbox */
+.consent-choice input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #4f3dd6;
+  transition: transform 0.2s ease;
+}
+
+.consent-choice input[type="checkbox"]:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.consent-choice:hover input[type="checkbox"]:not(:disabled) {
+  transform: scale(1.05);
+}
+
+/* Label Content */
+.consent-choice-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-grow: 1;
+}
+
+.consent-choice-content strong {
+  font-weight: 600;
+  color: #0f172a;
+  font-size: 0.95rem;
+}
+
+.consent-choice-content small {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Actions (Buttons) */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+.consent-banner-actions {
+  display: flex;
+  gap: 12px;
+  padding: 20px 24px 24px 24px;
+  border-top: 1px solid rgba(226, 232, 240, 0.5);
+  justify-content: flex-end;
+}
+
+.consent-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Reject Button */
+.consent-btn.reject {
+  background: rgba(15, 23, 42, 0.05);
+  color: #475569;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.consent-btn.reject:hover {
+  background: rgba(15, 23, 42, 0.1);
+  color: #0f172a;
+}
+
+.consent-btn.reject:active {
+  transform: scale(0.98);
+}
+
+/* Settings Button */
+.consent-btn.accept-settings {
+  background: rgba(79, 61, 214, 0.1);
+  color: #4f3dd6;
+  border: 1px solid rgba(79, 61, 214, 0.3);
+}
+
+.consent-btn.accept-settings:hover {
+  background: rgba(79, 61, 214, 0.15);
+  border-color: rgba(79, 61, 214, 0.5);
+}
+
+.consent-btn.accept-settings:active {
+  transform: scale(0.98);
+}
+
+/* Accept All Button (Primary CTA) */
+.consent-btn.accept-all {
+  background: linear-gradient(135deg, #4f3dd6 0%, #3f2fae 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(79, 61, 214, 0.3);
+}
+
+.consent-btn.accept-all:hover {
+  box-shadow: 0 6px 16px rgba(79, 61, 214, 0.4);
+  transform: translateY(-1px);
+}
+
+.consent-btn.accept-all:active {
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Responsive Design */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  #consent-banner {
+    padding: 16px;
+    align-items: flex-end;
+  }
+
+  .consent-banner-content {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 12px 12px 16px 16px;
+    margin-top: 0;
+  }
+
+  .consent-banner-header {
+    padding: 20px 20px 12px 20px;
+  }
+
+  .consent-banner-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .consent-banner-body {
+    padding: 16px 20px;
+    gap: 16px;
+  }
+
+  .consent-banner-actions {
+    padding: 16px 20px 20px 20px;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: stretch;
+  }
+
+  .consent-btn {
+    flex: 1 1 calc(50% - 4px);
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .consent-btn.accept-all {
+    flex-basis: 100%;
+  }
+
+  .consent-close-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 1.5rem;
+  }
+
+  .consent-intro {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .consent-banner-header h2 {
+    font-size: 1rem;
+  }
+
+  .consent-choice {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .consent-choice input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  .consent-choice-content strong {
+    font-size: 0.9rem;
+  }
+
+  .consent-choice-content small {
+    font-size: 0.75rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Accessibility */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+.consent-btn:focus-visible,
+.consent-choice input[type="checkbox"]:focus-visible {
+  outline: 2px solid #4f3dd6;
+  outline-offset: 2px;
+}
+
+.consent-close-btn:focus-visible {
+  outline: 2px solid #4f3dd6;
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  #consent-banner {
+    animation: none;
+  }
+
+  .consent-btn,
+  .consent-choice input[type="checkbox"] {
+    transition: none;
+  }
+}
+
+/* Dark Mode Support (optional) */
+@media (prefers-color-scheme: dark) {
+  .consent-banner-content {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
+    color: #f1f5f9;
+  }
+
+  .consent-banner-header {
+    border-bottom-color: rgba(226, 232, 240, 0.1);
+    color: #f1f5f9;
+  }
+
+  .consent-banner-header h2 {
+    color: #f8fafc;
+  }
+
+  .consent-close-btn {
+    color: #94a3b8;
+  }
+
+  .consent-close-btn:hover {
+    background: rgba(226, 232, 240, 0.1);
+    color: #e2e8f0;
+  }
+
+  .consent-intro {
+    color: #cbd5e1;
+  }
+
+  .consent-footer {
+    color: #94a3b8;
+  }
+
+  .consent-choice {
+    background: rgba(226, 232, 240, 0.05);
+    border-color: rgba(226, 232, 240, 0.1);
+  }
+
+  .consent-choice:hover:not(.essential) {
+    background: rgba(226, 232, 240, 0.1);
+    border-color: rgba(79, 61, 214, 0.3);
+  }
+
+  .consent-choice.essential {
+    background: rgba(79, 61, 214, 0.1);
+    border-color: rgba(79, 61, 214, 0.2);
+  }
+
+  .consent-choice-content strong {
+    color: #f1f5f9;
+  }
+
+  .consent-choice-content small {
+    color: #94a3b8;
+  }
+
+  .consent-banner-actions {
+    border-top-color: rgba(226, 232, 240, 0.1);
+  }
+
+  .consent-btn.reject {
+    background: rgba(226, 232, 240, 0.05);
+    color: #cbd5e1;
+    border-color: rgba(226, 232, 240, 0.1);
+  }
+
+  .consent-btn.reject:hover {
+    background: rgba(226, 232, 240, 0.1);
+    color: #f1f5f9;
+  }
+
+  .consent-btn.accept-settings {
+    background: rgba(79, 61, 214, 0.1);
+    color: #a78bfa;
+    border-color: rgba(79, 61, 214, 0.3);
+  }
+
+  .consent-btn.accept-settings:hover {
+    background: rgba(79, 61, 214, 0.15);
+  }
+}
