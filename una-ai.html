@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNA−AI | UNA Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #050a10;
+            --neon-cyan: #00ffff;
+            --electric-blue: #0088ff;
+            --text-light: #e8e8e8;
+            --text-dim: #a0a0a0;
+            --accent-purple: #7f00ff;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0a0f1a 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 10, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+       .logo {<
+</a>
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .lang-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(0, 136, 255, 0.1);
+            border: 1px solid var(--electric-blue);
+            border-radius: 4px;
+            padding: 0.5rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .lang-btn.active {
+            background: var(--electric-blue);
+            color: var(--bg-dark);
+        }
+
+        .lang-btn:hover {
+            color: var(--neon-cyan);
+        }
+
+        /* SECTIONS */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 255, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* SECTION 1: INTRO */
+        .section-intro {
+            background: linear-gradient(180deg, rgba(0, 255, 255, 0.05) 0%, rgba(0, 136, 255, 0.05) 100%);
+        }
+
+        .hero-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--electric-blue), var(--accent-purple));
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 136, 255, 0.4);
+        }
+
+        /* SECTION 2: THE CONCEPT */
+        .section-concept {
+            background: linear-gradient(180deg, transparent 0%, rgba(127, 0, 255, 0.03) 100%);
+        }
+
+        h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 2rem;
+            color: var(--neon-cyan);
+            letter-spacing: 1px;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .concept-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+        }
+
+        .concept-visual {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 136, 255, 0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            font-size: 3rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* SECTION 3: THE ALGORITHM */
+        .section-algorithm {
+            background: linear-gradient(180deg, rgba(0, 136, 255, 0.03) 0%, transparent 100%);
+        }
+
+        .algorithm-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .algo-box {
+            background: rgba(0, 255, 255, 0.08);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .algo-box:hover {
+            background: rgba(0, 255, 255, 0.15);
+            border-color: var(--neon-cyan);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 255, 255, 0.1);
+        }
+
+        .algo-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .algo-title {
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .algo-desc {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        /* SECTION 4: DATA FLOW */
+        .section-dataflow {
+            background: linear-gradient(180deg, transparent 0%, rgba(127, 0, 255, 0.05) 100%);
+        }
+
+        .dataflow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .flow-stage {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+            animation: slideIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .flow-stage:nth-child(1) { animation-delay: 0s; }
+        .flow-stage:nth-child(2) { animation-delay: 0.2s; }
+        .flow-stage:nth-child(3) { animation-delay: 0.4s; }
+        .flow-stage:nth-child(4) { animation-delay: 0.6s; }
+
+        .flow-icon {
+            background: linear-gradient(135deg, var(--electric-blue), var(--accent-purple));
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-size: 2rem;
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flow-text {
+            flex: 1;
+        }
+
+        .flow-text h3 {
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .flow-text p {
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .flow-arrow {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(180deg, var(--electric-blue), transparent);
+            margin: -1rem 0;
+        }
+
+        /* SECTION 5: USE CASES */
+        .section-usecases {
+            background: linear-gradient(180deg, rgba(0, 255, 255, 0.03) 0%, transparent 100%);
+        }
+
+        .usecases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .usecase-card {
+            background: rgba(0, 136, 255, 0.08);
+            border: 1px solid rgba(0, 136, 255, 0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .usecase-card:hover {
+            background: rgba(0, 255, 255, 0.15);
+            border-color: var(--neon-cyan);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(0, 255, 255, 0.1);
+        }
+
+        .usecase-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .usecase-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .usecase-desc {
+            color: var(--text-dim);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* SECTION 6: WHY IT WORKS */
+        .section-why {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.05) 0%, rgba(127, 0, 255, 0.05) 100%);
+        }
+
+        .why-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .why-list {
+            list-style: none;
+        }
+
+        .why-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .why-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--electric-blue);
+            font-weight: 700;
+        }
+
+        .why-visual {
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            font-size: 4rem;
+        }
+
+        /* SECTION 7: FOOTER */
+        .section-footer {
+            background: linear-gradient(180deg, rgba(5, 10, 16, 0.5) 0%, var(--bg-dark) 100%);
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            min-height: auto;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-link {
+            color: var(--electric-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--neon-cyan);
+        }
+
+        .footer-credit {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .concept-grid,
+            .why-content {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .flow-stage {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .flow-arrow {
+                width: 40px;
+                height: 2px;
+            }
+        }
+
+        /* VOICE INDICATOR */
+        .voice-indicator {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 200;
+            background: rgba(0, 136, 255, 0.2);
+            border: 1px solid var(--electric-blue);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .voice-indicator:hover {
+            background: rgba(0, 136, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        .voice-indicator.playing {
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">UNA GROUP</div>
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="bs">Bosanski</button>
+            <button class="lang-btn" data-lang="de">Deutsch</button>
+        </div>
+    </header>
+
+    <!-- SECTION 1: INTRO -->
+    <section class="section-intro" id="intro">
+        <div class="container">
+            <h1 class="hero-title" data-lang-bs="UNA−AI" data-lang-de="UNA−AI">
+                UNA−AI
+            </h1>
+            <p class="hero-subtitle" data-lang-bs="Kako je KI Arhitektura Transformira Podatke u Istinu" data-lang-de="Wie KI-Architektur Daten in Wahrheit verwandelt">
+                Kako je KI Arhitektura Transformira Podatke u Istinu
+            </p>
+            <button class="cta-button" onclick="document.getElementById('concept').scrollIntoView({behavior: 'smooth'});">
+                <span data-lang-bs="Kreni sa Učenjem" data-lang-de="Jetzt erkunden">Kreni sa Učenjem</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION 2: CONCEPT -->
+    <section class="section-concept" id="concept">
+        <div class="container">
+            <h2 data-lang-bs="Šta je Pattern Recognition?" data-lang-de="Was ist Pattern Recognition?">
+                Šta je Pattern Recognition?
+            </h2>
+            <div class="concept-grid">
+                <div class="concept-text" data-lang-bs="<p>Pattern Recognition je tehnologija koja analizira podatke — bilo audio, video, ili tekstualne informacije — kako bi pronašla skrivene obrasce i anomalije. Algoritmi traže frekvencije, tonalnost, pauze i emocionalne markere koje ljudski sluh često propušta.</p><p>Rezultat? Duboka analiza koja otkriva ono što se krije iza reči — namere, strach, laži, istinu.</p>" data-lang-de="<p>Pattern Recognition ist eine Technologie, die Daten analysiert — egal ob Audio, Video oder Text — um verborgene Muster und Anomalien zu finden. Algorithmen suchen nach Frequenzen, Tonalität, Pausen und emotionalen Markern, die das menschliche Ohr oft übersieht.</p><p>Das Ergebnis? Eine tiefe Analyse, die offenbart, was hinter den Worten verborgen ist — Absichten, Angst, Lügen, Wahrheit.</p>">
+                    <p>Pattern Recognition je tehnologija koja analizira podatke — bilo audio, video, ili tekstualne informacije — kako bi pronašla skrivene obrasce i anomalije. Algoritmi traže frekvencije, tonalnost, pauze i emocionalne markere koje ljudski sluh često propušta.</p>
+                    <p>Rezultat? Duboka analiza koja otkriva ono što se krije iza reči — namere, strach, laži, istinu.</p>
+                </div>
+                <div class="concept-visual">🧠</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: ALGORITHM -->
+    <section class="section-algorithm" id="algorithm">
+        <div class="container">
+            <h2 data-lang-bs="Kako Algoritam Radi" data-lang-de="Wie der Algorithmus funktioniert">
+                Kako Algoritam Radi
+            </h2>
+            <div class="algorithm-boxes">
+                <div class="algo-box">
+                    <div class="algo-icon">🔊</div>
+                    <div class="algo-title" data-lang-bs="Frekvencije" data-lang-de="Frequenzen">Frekvencije</div>
+                    <div class="algo-desc" data-lang-bs="Analizira tonalne promene koje signaliziraju stresnu, emocionalnu stanja i lažnjivost." data-lang-de="Analysiert Tonveränderungen, die Stress, emotionale Zustände und Lügenhaftigkeit anzeigen.">
+                        Analizira tonalne promene koje signaliziraju stresnu, emocionalnu stanja i lažnjivost.
+                    </div>
+                </div>
+                <div class="algo-box">
+                    <div class="algo-icon">⏸️</div>
+                    <div class="algo-title" data-lang-bs="Pauze" data-lang-de="Pausen">Pauze</div>
+                    <div class="algo-desc" data-lang-bs="Dugačke pauze često označavaju razmišljanje, sećanje, ili pokušaj da se nešto sakrije." data-lang-de="Lange Pausen deuten oft auf Nachdenken, Erinnerungen oder Vertuschungsversuche hin.">
+                        Dugačke pauze često označavaju razmišljanje, sećanje, ili pokušaj da se nešto sakrije.
+                    </div>
+                </div>
+                <div class="algo-box">
+                    <div class="algo-icon">❓</div>
+                    <div class="algo-title" data-lang-bs="Stotovanje" data-lang-de="Stottern">Stotovanje</div>
+                    <div class="algo-desc" data-lang-bs="Povećano stotovanje može biti znak nelagodnosti, straha ili laži." data-lang-de="Erhöhtes Stottern kann ein Zeichen von Unbehagen, Angst oder Lügen sein.">
+                        Povećano stotovanje može biti znak nelagodnosti, straha ili laži.
+                    </div>
+                </div>
+                <div class="algo-box">
+                    <div class="algo-icon">📊</div>
+                    <div class="algo-title" data-lang-bs="Tonalnost" data-lang-de="Tonalität">Tonalnost</div>
+                    <div class="algo-desc" data-lang-bs="Duboke promene u glasu otkrivaju emocionalnu stanja i autentičnost." data-lang-de="Tiefe Veränderungen in der Stimme zeigen emotionale Zustände und Authentizität.">
+                        Duboke promene u glasu otkrivaju emocionalnu stanja i autentičnost.
+                    </div>
+                </div>
+                <div class="algo-box">
+                    <div class="algo-icon">⚡</div>
+                    <div class="algo-title" data-lang-bs="Frekvencijske Skokove" data-lang-de="Frequenz-Sprünge">Frekvencijske Skokove</div>
+                    <div class="algo-desc" data-lang-bs="Nagla promena u ritmu ili intenzitetu govora signalizira emocionalnu promenu." data-lang-de="Plötzliche Änderungen im Redefluss oder Intensität signalisieren emotionale Veränderungen.">
+                        Nagla promena u ritmu ili intenzitetu govora signalizira emocionalnu promenu.
+                    </div>
+                </div>
+                <div class="algo-box">
+                    <div class="algo-icon">🎯</div>
+                    <div class="algo-title" data-lang-bs="ML Integracija" data-lang-de="ML-Integration">ML Integracija</div>
+                    <div class="algo-desc" data-lang-bs="Svaki ulaz trenira sistem da bude precizniji — više podataka = veća tačnost." data-lang-de="Jede Eingabe trainiert das System, präziser zu werden — mehr Daten = höhere Genauigkeit.">
+                        Svaki ulaz trenira sistem da bude precizniji — više podataka = veća tačnost.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: DATA FLOW -->
+    <section class="section-dataflow" id="dataflow">
+        <div class="container">
+            <h2 data-lang-bs="Tok Podataka" data-lang-de="Datenfluss">
+                Tok Podataka
+            </h2>
+            <div class="dataflow-container">
+                <div class="flow-stage">
+                    <div class="flow-icon">📁</div>
+                    <div class="flow-text">
+                        <h3 data-lang-bs="Ulaz" data-lang-de="Eingabe">Ulaz</h3>
+                        <p data-lang-bs="Audio, video, ili tekstualni podaci se učitavaju u sistem." data-lang-de="Audio-, Video- oder Textdaten werden in das System hochgeladen.">
+                            Audio, video, ili tekstualni podaci se učitavaju u sistem.
+                        </p>
+                    </div>
+                </div>
+                <div class="flow-arrow"></div>
+
+                <div class="flow-stage">
+                    <div class="flow-icon">⚙️</div>
+                    <div class="flow-text">
+                        <h3 data-lang-bs="Obrada" data-lang-de="Verarbeitung">Obrada</h3>
+                        <p data-lang-bs="Algoritam parsira podatke, izoluje važne signale i primenjuje Pattern Recognition." data-lang-de="Der Algorithmus analysiert die Daten, isoliert wichtige Signale und wendet Pattern Recognition an.">
+                            Algoritam parsira podatke, izoluje važne signale i primenjuje Pattern Recognition.
+                        </p>
+                    </div>
+                </div>
+                <div class="flow-arrow"></div>
+
+                <div class="flow-stage">
+                    <div class="flow-icon">🧬</div>
+                    <div class="flow-text">
+                        <h3 data-lang-bs="Analiza" data-lang-de="Analyse">Analiza</h3>
+                        <p data-lang-bs="ML model identifikuje obrasce, anomalije, i emocionalne markere. Pravi se mapa ponašanja." data-lang-de="Das ML-Modell identifiziert Muster, Anomalien und emotionale Marker. Eine Verhaltenskarte wird erstellt.">
+                            ML model identifikuje obrasce, anomalije, i emocionalne markere. Pravi se mapa ponašanja.
+                        </p>
+                    </div>
+                </div>
+                <div class="flow-arrow"></div>
+
+                <div class="flow-stage">
+                    <div class="flow-icon">✅</div>
+                    <div class="flow-text">
+                        <h3 data-lang-bs="Rezultat: Signali za Procenu" data-lang-de="Resultat: Signale zur Bewertung">Rezultat: Signali za Procenu</h3>
+                        <p data-lang-bs="Sistem vraća skup signala i mogućih nedoslednosti — konačnu procenu uvek donosi čovek." data-lang-de="Das System liefert eine Reihe von Signalen und möglichen Unstimmigkeiten — die endgültige Bewertung trifft immer ein Mensch.">
+                            Sistem vraća skup signala i mogućih nedoslednosti — konačnu procenu uvek donosi čovek.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: USE CASES -->
+    <section class="section-usecases" id="usecases">
+        <div class="container">
+            <h2 data-lang-bs="Primene" data-lang-de="Anwendungen">
+                Primene
+            </h2>
+            <div class="usecases-grid">
+                <div class="usecase-card">
+                    <div class="usecase-icon">👮</div>
+                    <div class="usecase-title" data-lang-bs="Policija & Istraga" data-lang-de="Polizei & Ermittlungen">Policija & Istraga</div>
+                    <div class="usecase-desc" data-lang-bs="Ubrzana analiza saslušanja i iskaza. Brzo identificiranje lažnjivosti i proturečnosti." data-lang-de="Schnelle Analyse von Verhören und Aussagen. Schnelle Identifikation von Lügen und Widersprüchen.">
+                        Ubrzana analiza saslušanja i iskaza. Brzo identificiranje lažnjivosti i proturečnosti.
+                    </div>
+                </div>
+
+                <div class="usecase-card">
+                    <div class="usecase-icon">🕵️</div>
+                    <div class="usecase-title" data-lang-bs="Bezbednost & Obaveštajci" data-lang-de="Sicherheit & Geheimdienste">Bezbednost & Obaveštajci</div>
+                    <div class="usecase-desc" data-lang-bs="Detektovanje obezbjeđenih informacija, rizičnih ponašanja, i predikcija budućih radnji." data-lang-de="Erkennung von Sicherheitsrisiken, verdächtigem Verhalten und Vorhersage zukünftiger Handlungen.">
+                        Detektovanje obezbjeđenih informacija, rizičnih ponašanja, i predikcija budućih radnji.
+                    </div>
+                </div>
+
+                <div class="usecase-card">
+                    <div class="usecase-icon">⚖️</div>
+                    <div class="usecase-title" data-lang-bs="Pravni Sistem" data-lang-de="Rechtssystem">Pravni Sistem</div>
+                    <div class="usecase-desc" data-lang-bs="Analiza svedočenja, potvrda kredibilnosti, i podrška u dokaznim postupcima." data-lang-de="Analyse von Zeugenaussagen, Glaubwürdigkeitsprüfung und Unterstützung bei Beweisverfahren.">
+                        Analiza svedočenja, potvrda kredibilnosti, i podrška u dokaznim postupcima.
+                    </div>
+                </div>
+
+                <div class="usecase-card">
+                    <div class="usecase-icon">🏢</div>
+                    <div class="usecase-title" data-lang-bs="Korporativna Sigurnost" data-lang-de="Unternehmensicherheit">Korporativna Sigurnost</div>
+                    <div class="usecase-desc" data-lang-bs="Proverava pouzdanost zaposlenih, detektuje interne pretnje, i štiti poverljive informacije." data-lang-de="Überprüft Mitarbeiterzuverlässigkeit, erkennt interne Bedrohungen und schützt vertrauliche Informationen.">
+                        Proverava pouzdanost zaposlenih, detektuje interne pretnje, i štiti poverljive informacije.
+                    </div>
+                </div>
+
+                <div class="usecase-card">
+                    <div class="usecase-icon">🎯</div>
+                    <div class="usecase-title" data-lang-bs="Privatni Sektor" data-lang-de="Privatsektor">Privatni Sektor</div>
+                    <div class="usecase-desc" data-lang-bs="Verifikacija iskaza, analiza pregovora, i zaštita od manipulacije." data-lang-de="Überprüfung von Aussagen, Verhandlungsanalyse und Schutz vor Manipulation.">
+                        Verifikacija iskaza, analiza pregovora, i zaštita od manipulacije.
+                    </div>
+                </div>
+
+                <div class="usecase-card">
+                    <div class="usecase-icon">🔮</div>
+                    <div class="usecase-title" data-lang-bs="Predikcija Ponašanja" data-lang-de="Verhaltensvorhersage">Predikcija Ponašanja</div>
+                    <div class="usecase-desc" data-lang-bs="Algoritam može predvideti budućne radnje na osnovu trenutnog ponašanja i emocionalnih signala." data-lang-de="Der Algorithmus kann zukünftige Handlungen auf Basis des aktuellen Verhaltens und emotionaler Signale vorhersagen.">
+                        Algoritam može predvideti budućne radnje na osnovu trenutnog ponašanja i emocionalnih signala.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: WHY IT WORKS -->
+    <section class="section-why" id="why">
+        <div class="container">
+            <h2 data-lang-bs="Zašto to Radi?" data-lang-de="Warum funktioniert das?">
+                Zašto to Radi?
+            </h2>
+            <div class="why-content">
+                <ul class="why-list">
+                    <li data-lang-bs="<strong>Tehnologija je dostupna.</strong> Nije potreban NASA ili veliki budžet — samo dobar inženjer." data-lang-de="<strong>Die Technologie ist verfügbar.</strong> Es braucht keine NASA oder großes Budget — nur einen guten Ingenieur.">
+                        <strong>Tehnologija je dostupna.</strong> Nije potreban NASA ili veliki budžet — samo dobar inženjer.
+                    </li>
+                    <li data-lang-bs="<strong>KI je alat.</strong> Kao i svaki alat, rezultat zavisi od arhitekta koji ga koristi." data-lang-de="<strong>KI ist ein Werkzeug.</strong> Wie jedes Werkzeug hängt das Ergebnis vom Architekten ab, der es nutzt.">
+                        <strong>KI je alat.</strong> Kao i svaki alat, rezultat zavisi od arhitekta koji ga koristi.
+                    </li>
+                    <li data-lang-bs="<strong>Podaci govore.</strong> Svaka sekunda glasa, svaki okvir videa, svaki tekst — to je informacija." data-lang-de="<strong>Daten sprechen.</strong> Jede Sekunde Audio, jedes Video-Frame, jeder Text — das ist Information.">
+                        <strong>Podaci govore.</strong> Svaka sekunda glasa, svaki okvir videa, svaki tekst — to je informacija.
+                    </li>
+                    <li data-lang-bs="<strong>Algoritmi ne moraju biti kompleksni.</strong> Često, elegantna rešenja su najmoćnija." data-lang-de="<strong>Algorithmen müssen nicht komplex sein.</strong> Oft sind elegante Lösungen die mächtigsten.">
+                        <strong>Algoritmi ne moraju biti kompleksni.</strong> Često, elegantna rešenja su najmoćnija.
+                    </li>
+                    <li data-lang-bs="<strong>Istina se ne može sakriti.</strong> Ako znate gde da tražite, signal je uvek tu." data-lang-de="<strong>Wahrheit kann nicht verborgen werden.</strong> Wenn du weißt, wo du suchen musst, ist das Signal immer da.">
+                        <strong>Istina se ne može sakriti.</strong> Ako znate gde da tražite, signal je uvek tu.
+                    </li>
+                </ul>
+                <div class="why-visual">
+                    🔍
+                    <div style="font-size: 1.2rem; color: var(--neon-cyan); margin-top: 1rem;" data-lang-bs="Signal, ne presuda" data-lang-de="Signal, kein Urteil">Signal, ne presuda</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: FOOTER -->
+    <section class="section-footer" id="footer">
+        <div class="container" style="text-align: center;">
+            <h2 class="footer-title" data-lang-bs="Šta je Sledeće?" data-lang-de="Was kommt als Nächstes?">
+                Šta je Sledeće?
+            </h2>
+            <p style="color: var(--text-dim); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;" data-lang-bs="Sensor integracija (pulsni oksimetar, EEG, kamera u realnom vremenu) će proširiti mogućnosti sistema na čitavog čoveka — nije samo glas, već kompletno biometrijsko razumevanje ponašanja." data-lang-de="Sensor-Integration (Pulsoximeter, EEG, Echtzeit-Kamera) wird die Kapazität des Systems auf den ganzen Menschen erweitern — nicht nur die Stimme, sondern ein vollständiges biometrisches Verständnis des Verhaltens.">
+                Sensor integracija (pulsni oksimetar, EEG, kamera u realnom vremenu) će proširiti mogućnosti sistema na čitavog čoveka — nije samo glas, već kompletno biometrijsko razumevanje ponašanja.
+            </p>
+
+            <div class="footer-credit">
+                <p style="margin-bottom: 1rem;" data-lang-bs="Napravljena od <strong>UNA Group</strong>" data-lang-de="Gebaut von <strong>UNA Group</strong>">
+                    Napravljena od <strong>UNA Group</strong>
+                </p>
+                <p data-lang-bs="za više informacija, posjetite <a href='https://una-ai.shop' class='footer-link' target='_blank'>una-ai.shop</a>" data-lang-de="Für weitere Informationen besuchen Sie <a href='https://una-ai.shop' class='footer-link' target='_blank'>una-ai.shop</a>">
+                    za više informacija, posjetite <a href="https://una-ai.shop" class="footer-link" target="_blank">una-ai.shop</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOICE INDICATOR (optional, for future audio feature) -->
+    <div class="voice-indicator" id="voiceIndicator" title="Audio explanation available" onclick="toggleVoice()">
+        🔊
+    </div>
+
+    <script>
+        // LANGUAGE SYSTEM
+        const langButtons = document.querySelectorAll('.lang-btn');
+        let currentLang = 'bs'; // Default: Bosnian
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentLang = btn.dataset.lang;
+                langButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                updateLanguage();
+            });
+        });
+
+        function updateLanguage() {
+            document.querySelectorAll('[data-lang-bs], [data-lang-de]').forEach(el => {
+                const attr = `data-lang-${currentLang}`;
+                if (el.hasAttribute(attr)) {
+                    el.innerHTML = el.getAttribute(attr);
+                }
+            });
+        }
+
+        // VOICE TOGGLE (placeholder for future feature)
+        function toggleVoice() {
+            const indicator = document.getElementById('voiceIndicator');
+            indicator.classList.toggle('playing');
+            // Future: integrate Google TTS or ElevenLabs here
+        }
+
+        // SCROLL ANIMATIONS
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // MOUSE TRACKING (subtle gradient follow)
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            document.querySelectorAll('section').forEach(section => {
+                section.style.setProperty('--mouse-x', `${x}%`);
+                section.style.setProperty('--mouse-y', `${y}%`);
+            });
+        });
+
+        // INITIALIZE
+        updateLanguage();
+    </script>
+</body>
+</html>
