@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Wiederverwendbares UNA Website-Template für lokale Handwerksbetriebe." />
+    <title>UNA Template | Karosserie & Lack</title>
+    <style>
+      :root { --ink:#0d1c28; --ink-2:#173244; --paper:#f8f6f1; --mint:#a8decc; --lime:#ddf15b; --orange:#ff7957; --mist:#dce8e8; --line:rgba(13,28,40,.14); --white:#fffefa; }
+      * { box-sizing:border-box; }
+      html { scroll-behavior:smooth; }
+      body { margin:0; background:var(--paper); color:var(--ink); font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height:1.45; }
+      a { color:inherit; text-decoration:none; }
+      button,input,textarea,select { font:inherit; }
+      .wrap { width:min(1160px, calc(100% - 40px)); margin:auto; }
+      .eyebrow { margin:0 0 15px; color:#397163; font-size:.73rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+      .pill { display:inline-flex; gap:8px; align-items:center; border:1px solid var(--line); padding:7px 11px; border-radius:99px; font-size:.81rem; font-weight:700; background:rgba(255,255,255,.4); }
+      .dot { width:8px; height:8px; border-radius:50%; background:var(--lime); box-shadow:0 0 0 4px rgba(221,241,91,.18); }
+      header { position:sticky; top:0; z-index:10; backdrop-filter:blur(13px); background:rgba(248,246,241,.83); border-bottom:1px solid rgba(13,28,40,.08); }
+      .nav { min-height:74px; display:flex; align-items:center; justify-content:space-between; gap:26px; }
+      .brand { display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:-.04em; }
+      .brand-mark { width:33px; height:33px; display:grid; place-items:center; border-radius:10px; color:var(--ink); background:var(--lime); font-size:1.15rem; transform:rotate(-8deg); }
+      .nav-links { display:flex; gap:23px; font-size:.9rem; font-weight:700; color:#44606c; }
+      .nav-links a:hover { color:var(--ink); }
+      .nav-cta { background:var(--ink); color:white; padding:11px 15px; border-radius:9px; font-size:.87rem; font-weight:800; }
+      .hero { padding:80px 0 58px; overflow:hidden; }
+      .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:64px; }
+      h1,h2,h3,p { margin-top:0; }
+      h1 { max-width:750px; margin-bottom:23px; font-size:clamp(2.85rem,6vw,5.55rem); line-height:.96; letter-spacing:-.072em; }
+      h1 em { color:#3e7c6c; font-style:normal; }
+      .lead { max-width:610px; color:#46616d; font-size:1.13rem; line-height:1.58; }
+      .hero-actions { display:flex; flex-wrap:wrap; gap:11px; margin:30px 0 27px; }
+      .button { border:0; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:51px; padding:0 18px; border-radius:10px; font-weight:850; }
+      .button-main { background:var(--orange); color:#251314; box-shadow:0 8px 0 #d8563d; transition:transform .16s, box-shadow .16s; }
+      .button-main:hover { transform:translateY(3px); box-shadow:0 5px 0 #d8563d; }
+      .button-secondary { border:1px solid var(--line); background:var(--white); color:var(--ink); }
+      .micro-proof { display:flex; align-items:center; gap:11px; color:#536c76; font-size:.83rem; }
+      .avatars { display:flex; }
+      .avatars b { display:grid; place-items:center; width:25px; height:25px; margin-right:-5px; border:2px solid var(--paper); border-radius:50%; background:var(--mint); color:var(--ink); font-size:.62rem; }
+      .hero-art { position:relative; min-height:490px; }
+      .art-blob { position:absolute; inset:32px 0 20px 30px; border-radius:38px 130px 38px 95px; background:var(--mint); transform:rotate(-3deg); }
+      .art-grid { position:absolute; inset:0; background-image:radial-gradient(rgba(13,28,40,.25) 1px, transparent 1px); background-size:17px 17px; opacity:.24; mask-image:linear-gradient(110deg,transparent 0,black 24%,black 80%,transparent); }
+      .car-photo { position:absolute; z-index:1; top:108px; right:4px; width:min(520px,104%); height:275px; object-fit:cover; object-position:center 58%; border:3px solid var(--ink); border-radius:31px 98px 30px 58px; box-shadow:12px 14px 0 rgba(13,28,40,.12); transform:rotate(-3deg); }
+      .shine { position:absolute; z-index:2; width:90px; height:22px; border-radius:999px; background:var(--lime); border:2px solid var(--ink); transform:rotate(-12deg); right:80px; top:97px; }
+      .float-card { position:absolute; z-index:3; padding:15px; border:2px solid var(--ink); border-radius:13px; background:var(--white); box-shadow:7px 7px 0 var(--ink); font-size:.82rem; font-weight:760; }
+      .float-card strong { display:block; margin-top:3px; font-size:1.08rem; letter-spacing:-.04em; }
+      .float-one { left:0; bottom:68px; transform:rotate(3deg); }
+      .float-two { right:6px; top:58px; transform:rotate(5deg); background:var(--lime); }
+      .mini-check { color:#2a7662; }
+      .trust { border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:#f1eee7; }
+      .trust-row { min-height:95px; display:flex; align-items:center; justify-content:space-between; gap:20px; color:#597078; font-size:.9rem; }
+      .trust-row strong { color:var(--ink); }
+      .trust-items { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:23px; font-weight:800; color:#3e5862; }
+      section { padding:102px 0; }
+      .section-heading { display:grid; grid-template-columns:.75fr 1.25fr; gap:44px; margin-bottom:46px; }
+      h2 { margin-bottom:14px; font-size:clamp(2rem,4vw,3.45rem); letter-spacing:-.065em; line-height:1.02; }
+      .section-intro { max-width:620px; color:#536b75; font-size:1.06rem; }
+      .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+      .step { min-height:265px; padding:25px; border:1px solid var(--line); border-radius:15px; background:var(--white); }
+      .step-number { display:grid; place-items:center; width:34px; height:34px; margin-bottom:60px; border-radius:50%; background:var(--ink); color:white; font-size:.82rem; font-weight:800; }
+      .step h3,.benefit h3 { margin-bottom:10px; font-size:1.23rem; letter-spacing:-.04em; }
+      .step p,.benefit p { margin-bottom:0; color:#617781; font-size:.93rem; }
+      .solution { background:var(--ink); color:white; }
+      .solution .eyebrow { color:var(--lime); }
+      .solution .section-intro { color:#b6cbd0; }
+      .benefits { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.14); }
+      .benefit { min-height:215px; padding:29px; background:#143042; }
+      .benefit:nth-child(2),.benefit:nth-child(3) { background:#19394c; }
+      .benefit .icon { display:grid; place-items:center; width:39px; height:39px; margin-bottom:34px; border-radius:10px; background:var(--mint); color:var(--ink); font-size:1.1rem; }
+      .benefit p { color:#b8ccd1; }
+      .split { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+      .browser { border:2px solid var(--ink); border-radius:15px; overflow:hidden; background:#fff; box-shadow:13px 13px 0 var(--mint); }
+      .browser-top { display:flex; gap:6px; align-items:center; padding:12px 14px; border-bottom:2px solid var(--ink); background:#eef3ef; }
+      .browser-top i { width:8px; height:8px; border-radius:50%; background:var(--orange); }
+      .browser-top i:nth-child(2) { background:var(--lime); }.browser-top i:nth-child(3) { background:var(--mint); }
+      .map-card { padding:25px; min-height:345px; background:linear-gradient(135deg,#c5e6dd,#f5f2df); position:relative; overflow:hidden; }
+      .map-card:before { content:""; position:absolute; width:160%; height:32px; background:rgba(255,255,255,.8); transform:rotate(-34deg); left:-30%; top:43%; box-shadow:0 100px rgba(255,255,255,.75),0 -100px rgba(255,255,255,.72); }
+      .pin { position:absolute; top:111px; left:49%; z-index:1; width:52px; height:52px; border:3px solid var(--ink); border-radius:50% 50% 50% 0; background:var(--orange); transform:rotate(-45deg); box-shadow:5px 5px 0 var(--ink); }
+      .pin:after { content:""; position:absolute; inset:13px; border-radius:50%; background:var(--paper); }
+      .map-list { position:absolute; z-index:2; left:21px; right:21px; bottom:20px; padding:14px; border:2px solid var(--ink); border-radius:10px; background:white; font-size:.78rem; }
+      .map-list b { display:block; margin-bottom:7px; font-size:.94rem; }.stars { color:#dc9930; letter-spacing:1px; }
+      .bullets { padding:0; margin:26px 0; list-style:none; }.bullets li { padding:10px 0 10px 30px; border-bottom:1px solid var(--line); position:relative; font-weight:650; }.bullets li:before { content:"✓"; position:absolute; left:0; color:#278269; font-weight:900; }
+      .workflow { padding-top:0; }.flow { display:grid; grid-template-columns:1.25fr .75fr; gap:17px; }.flow-demo { min-height:385px; border-radius:17px; background:#e9e5dc; padding:22px; position:relative; overflow:hidden; }.phone { position:absolute; width:205px; height:382px; right:45px; bottom:-70px; padding:18px 13px; border:3px solid var(--ink); border-radius:29px; background:var(--ink); transform:rotate(7deg); box-shadow:9px 11px 0 rgba(13,28,40,.22); }.phone-screen { height:100%; border-radius:17px; padding:18px 12px; background:#fffefa; }.phone-line { height:10px; border-radius:99px; background:#d7e5e2; margin:10px 0; }.phone-upload { margin:17px 0; padding:16px 7px; border:2px dashed #78a998; border-radius:10px; color:#367561; text-align:center; font-size:.68rem; font-weight:800; }.flow-label { position:absolute; left:28px; top:39px; max-width:250px; }.flow-label b { display:block; margin:10px 0; font-size:1.7rem; line-height:1.05; letter-spacing:-.06em; }.flow-small { display:grid; gap:17px; }.flow-tile { min-height:184px; padding:22px; border-radius:17px; background:var(--lime); }.flow-tile:nth-child(2){background:var(--orange);}.flow-tile span { display:block; font-size:1.8rem; }.flow-tile b { display:block; margin:22px 0 7px; font-size:1.08rem; letter-spacing:-.04em; }.flow-tile p { margin:0; font-size:.86rem; }
+      .services { background:#efeae0; }.service-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }.service { padding:23px; min-height:190px; border-radius:14px; background:var(--white); border:1px solid rgba(13,28,40,.08); }.service-tag { display:inline-block; margin-bottom:31px; padding:5px 8px; border-radius:5px; background:var(--mist); color:#43636a; font-size:.7rem; font-weight:850; letter-spacing:.06em; text-transform:uppercase; }.service h3 { margin-bottom:7px; font-size:1.1rem; letter-spacing:-.04em; }.service p { margin-bottom:0; color:#637982; font-size:.86rem; }
+      .catalog { background:#f1eee7; }.catalog-top { display:flex; gap:18px; justify-content:space-between; align-items:flex-end; margin-bottom:28px; }.catalog-top .section-intro { margin:0; }.price-note { max-width:290px; padding:11px 13px; border-left:3px solid var(--orange); color:#526a72; font-size:.8rem; line-height:1.42; }.catalog-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; }.catalog-card { display:flex; min-height:314px; padding:21px; flex-direction:column; border:1px solid var(--line); border-radius:15px; background:var(--white); }.catalog-card:hover { border-color:#7fb5a4; box-shadow:0 10px 24px rgba(13,28,40,.07); }.catalog-icon { display:grid; place-items:center; width:38px; height:38px; margin-bottom:22px; border-radius:10px; background:var(--mist); font-size:1.1rem; }.catalog-card h3 { margin-bottom:7px; font-size:1.1rem; letter-spacing:-.045em; }.catalog-card p { margin-bottom:15px; color:#627882; font-size:.84rem; }.price { margin-top:auto; color:var(--ink); font-size:1.75rem; font-weight:900; letter-spacing:-.06em; }.price small { display:block; margin:3px 0 12px; color:#6b8087; font-size:.68rem; font-weight:700; letter-spacing:0; }.catalog-card .button { min-height:41px; padding:0 12px; font-size:.81rem; }.catalog-cart { display:flex; align-items:center; justify-content:space-between; gap:25px; margin-top:18px; padding:18px 21px; border-radius:13px; background:var(--ink); color:white; }.catalog-cart p { margin:4px 0 0; color:#bbccd0; font-size:.84rem; }.catalog-cart b { font-size:1.03rem; }.catalog-cart-actions { display:flex; align-items:center; gap:12px; }.catalog-cart .button { background:var(--lime); color:var(--ink); }.cart-total { color:var(--lime); font-size:.95rem; font-weight:850; white-space:nowrap; }
+      .growth { background:linear-gradient(125deg,#fffefa 0%,#eef7f3 100%); }.growth-grid { display:grid; grid-template-columns:1fr 1fr; gap:17px; }.growth-panel { padding:31px; border-radius:17px; background:var(--ink); color:white; }.growth-panel .eyebrow { color:var(--lime); }.growth-panel h3 { margin:8px 0 13px; font-size:1.65rem; letter-spacing:-.055em; }.growth-panel p { color:#b8ccd1; }.growth-list { padding:0; margin:24px 0 0; list-style:none; }.growth-list li { padding:10px 0; border-top:1px solid rgba(255,255,255,.17); font-size:.9rem; font-weight:700; }.growth-list li:before { content:"↗"; margin-right:9px; color:var(--lime); }.commerce-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }.commerce-card { min-height:208px; padding:22px; border:1px solid var(--line); border-radius:14px; background:white; }.commerce-card span { display:grid; place-items:center; width:38px; height:38px; margin-bottom:32px; border-radius:10px; background:var(--mist); font-size:1.1rem; }.commerce-card h3 { margin-bottom:8px; font-size:1.08rem; letter-spacing:-.04em; }.commerce-card p { margin-bottom:0; color:#637982; font-size:.87rem; }.partner-strip { margin-top:17px; padding:22px 26px; display:flex; gap:24px; align-items:center; justify-content:space-between; border-radius:13px; background:var(--orange); color:#251314; }.partner-strip b { display:block; margin-bottom:4px; font-size:1.08rem; }.partner-strip p { margin:0; font-size:.9rem; }.partner-strip .button { flex:0 0 auto; background:var(--ink); color:white; }
+      .faq { display:grid; grid-template-columns:.75fr 1.25fr; gap:64px; }.faq-list { border-top:1px solid var(--line); }.faq-item { border-bottom:1px solid var(--line); }.faq-item button { width:100%; padding:20px 0; border:0; background:none; cursor:pointer; display:flex; justify-content:space-between; gap:15px; color:var(--ink); text-align:left; font-size:1rem; font-weight:800; }.faq-item .answer { max-height:0; overflow:hidden; color:#617580; transition:max-height .25s ease,padding .25s ease; }.faq-item.open .answer { max-height:190px; padding:0 0 20px; }.plus { font-size:1.35rem; color:#4a8475; }
+      .cta { padding:78px 0; background:var(--mint); }.cta-box { display:grid; grid-template-columns:1.1fr .9fr; gap:45px; align-items:end; }.cta h2 { max-width:680px; margin-bottom:0; }.cta-form { display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }.cta-form .button { width:100%; max-width:260px; }.cta-note { grid-column:2; margin:0; color:#456965; font-size:.79rem; text-align:right; }
+      footer { padding:32px 0; background:var(--ink); color:#bdced0; font-size:.83rem; }.foot { display:flex; justify-content:space-between; gap:25px; }.foot strong { color:white; }.template-note { display:none; }
+      dialog { width:min(540px,calc(100% - 26px)); border:0; padding:0; border-radius:18px; box-shadow:0 28px 85px rgba(0,0,0,.35); }.modal { padding:28px; background:var(--paper); }.modal-head { display:flex; justify-content:space-between; gap:20px; }.close { width:34px; height:34px; border:1px solid var(--line); border-radius:50%; background:white; cursor:pointer; font-size:1.25rem; }.modal h3 { margin:5px 0 8px; font-size:1.75rem; letter-spacing:-.05em; }.modal p { color:#62757e; }.form-grid { display:grid; gap:11px; margin-top:20px; }.form-grid input,.form-grid select,.form-grid textarea { width:100%; padding:12px 13px; border:1px solid #b9c9c9; border-radius:8px; background:white; color:var(--ink); }.form-grid textarea { min-height:75px; resize:vertical; }.form-success { display:none; margin-top:14px; padding:12px; border-radius:8px; background:#d9f2e5; color:#1d604c; font-weight:700; }
+      @media (max-width:800px) { .nav-links { display:none; }.hero { padding-top:52px; }.hero-grid,.split,.cta-box,.faq,.section-heading { grid-template-columns:1fr; gap:28px; }.hero-art { min-height:390px; }.steps,.service-grid,.commerce-grid,.growth-grid,.catalog-grid { grid-template-columns:1fr; }.benefits,.flow { grid-template-columns:1fr; }.flow-demo { min-height:330px; }.phone { right:23px; transform:rotate(4deg) scale(.82); transform-origin:bottom right; }.trust-row { padding:20px 0; align-items:flex-start; flex-direction:column; }.trust-items { justify-content:flex-start; gap:13px; }.cta-form,.cta-note { grid-column:auto; justify-content:flex-start; text-align:left; }.cta-form .button { max-width:none; }.foot { flex-direction:column; }.art-blob { left:12px; }.float-two { right:0; }.car { right:4px; }.section-heading { margin-bottom:32px; }.partner-strip,.catalog-top,.catalog-cart { align-items:flex-start; flex-direction:column; }.catalog-cart-actions { width:100%; justify-content:space-between; } section { padding:72px 0; } }
+      .shop-explainer { display:grid; grid-template-columns:1fr .85fr; gap:18px; margin-top:18px; }.shop-path { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; overflow:hidden; border-radius:14px; background:var(--line); }.shop-step { min-height:164px; padding:19px; background:var(--ink); color:white; }.shop-step:nth-child(2),.shop-step:nth-child(4){background:#173244;}.shop-step b { display:block; margin:20px 0 7px; font-size:1rem; }.shop-step p { margin:0; color:#bdd0d3; font-size:.82rem; }.shop-step span { color:var(--lime); font-size:1.25rem; font-weight:900; }.shop-margin { padding:27px; border-radius:14px; background:var(--lime); }.shop-margin h3 { margin:7px 0 11px; font-size:1.45rem; letter-spacing:-.055em; }.shop-margin p { margin-bottom:0; font-size:.9rem; }.upload-field { display:block; padding:14px; border:2px dashed #78a998; border-radius:10px; background:#f6fffb; color:#285f50; font-size:.88rem; font-weight:800; cursor:pointer; }.upload-field small { display:block; margin-top:3px; color:#5d7775; font-weight:600; }.upload-field input { position:absolute; width:1px; height:1px; overflow:hidden; opacity:0; }
+      @media (max-width:800px) { .shop-explainer,.shop-path { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <!-- TEMPLATE SETTINGS: change the data values below when copying this website. -->
+    <script>
+      const BUSINESS = {
+        name: "Musterbetrieb Karosserie & Lack",
+        shortName: "Musterbetrieb",
+        city: "Wien",
+        phone: "+43 1 234 56 78",
+        phoneLink: "+4312345678",
+        email: "hallo@musterbetrieb.at",
+        primaryService: "Karosserie & Lack",
+        services: ["Spenglerei & Karosserie", "Autolackierung", "Unfallschäden", "Versicherungsabwicklung", "Smart Repair", "Fahrzeugaufbereitung"],
+        commerce: [
+          {icon:"✦", title:"Lack & Fahrzeugpflege", text:"Pflegeprodukte, Lackstifte, Versiegelungen und Pakete passend zu Fahrzeug und Reparatur."},
+          {icon:"◫", title:"Folierungen & Design", text:"Folien, Tönungen und individuelle Akzente: online auswählen und als Projekt oder Produkt anfragen."},
+          {icon:"◉", title:"Felgen & Reifen", text:"Kompletträder, Felgen, Reifen und saisonale Ergänzungen als klare Produktkategorien."},
+          {icon:"⌁", title:"Zubehör & Nachrüstung", text:"Von Sensoren bis Fahrzeugzubehör: Kunden entdecken passende Upgrades direkt auf der Seite."},
+          {icon:"▣", title:"Teile & Ersatzteile", text:"Passende Teile können bestellt werden, ohne dass alles im Betrieb auf Lager liegen muss."},
+          {icon:"↗", title:"Service-Pakete", text:"Sinnvolle Kombinationen aus Werkstattservice, Aufbereitung und saisonaler Fahrzeugpflege."}
+        ],
+        standardServices: [
+          {icon:"◌", title:"Räder umstecken", price:39, unit:"4 komplette Räder auf Felgen", detail:"Luftdruck- und Drehmomentkontrolle inklusive."},
+          {icon:"◉", title:"Reifenwechsel & Wuchten", price:69, unit:"bis 16 Zoll", detail:"Montage, Wuchten und Sichtprüfung für Ihren Radsatz."},
+          {icon:"◒", title:"Ölwechsel inkl. Filter", price:119, unit:"bis 5 Liter Markenöl", detail:"Frisches Motoröl und Ölfilter für viele gängige PKW."},
+          {icon:"✓", title:"§57a Pickerl", price:79, unit:"inklusive Plakette", detail:"Überprüfung Ihres PKW; notwendige Reparaturen nur nach Rücksprache."},
+          {icon:"▣", title:"Jahresservice", price:195, unit:"Basis-Service", detail:"Wichtige Sicht- und Funktionsprüfungen für einen verlässlichen Alltag."},
+          {icon:"❄", title:"Klimaservice", price:89, unit:"Aktions-/Basispreis", detail:"Funktionscheck und Wartung für frische Luft im Fahrzeug."},
+          {icon:"✦", title:"Smart Repair", price:149, unit:"kleine Lackschäden", detail:"Für ausgewählte Kratzer und kleine Schäden; Foto genügt für die Ersteinschätzung."},
+          {icon:"◫", title:"Stoßfänger lackieren", price:349, unit:"ab Preis", detail:"Preis nach Farbton, Zustand und Umfang; Fotos reichen für eine erste Einschätzung."}
+        ],
+        partnerHeadline: "Mehr Möglichkeiten rund ums Fahrzeug.",
+        partnerText: "Für Flotten, Unternehmen und Kooperationspartner schaffen wir klare Wege für wiederkehrende Aufträge, ergänzende Leistungen und verlässliche Betreuung."
+      };
+    </script>
+    <header>
+      <nav class="wrap nav" aria-label="Hauptnavigation">
+        <a href="#start" class="brand" aria-label="Zur Startseite"><span class="brand-mark">✦</span><span data-business="name"></span></a>
+        <div class="nav-links"><a href="#leistungen">Leistungen</a><a href="#ablauf">So einfach geht's</a><a href="#katalog">Preise & Termine</a><a href="#produkte">Produkte</a><a href="shop.html">Shop ansehen</a><a href="tuning.html">Tuning Studio</a><a href="community.html">UNA Community</a><a href="#partner">Partner</a><a href="#fragen">Fragen</a></div>
+        <a class="nav-cta" href="#kontakt">Schaden melden →</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero" id="start">
+        <div class="wrap hero-grid">
+          <div>
+            <p class="eyebrow"><span data-business="city"></span> · Meisterbetrieb für <span data-business="primaryService"></span></p>
+            <h1>Ihr Auto in <em>guten Händen.</em> Von der Schadenmeldung bis zur Abholung.</h1>
+            <p class="lead">Ob kleiner Lackschaden oder Unfallreparatur: Wir kümmern uns persönlich, transparent und zuverlässig um Ihr Fahrzeug – inklusive Unterstützung bei der Schadensabwicklung.</p>
+            <div class="hero-actions"><button class="button button-main" data-open-modal>Schaden online melden <span>↗</span></button><a class="button button-secondary" data-phone-link><span data-business="phone"></span></a></div>
+            <div class="micro-proof"><div class="avatars"><b>✓</b><b>★</b><b>✓</b></div><span>Persönliche Beratung. Klare Abläufe. Kein unnötiger Aufwand.</span></div>
+          </div>
+          <div class="hero-art" aria-label="Illustration eines gepflegten Autos">
+            <div class="art-blob"></div><div class="art-grid"></div><div class="shine"></div><img class="car-photo" src="assets/tuning-preview-v1.png" alt="Gepflegte Performance-Limousine" />
+            <div class="float-card float-one"><span class="mini-check">●</span> Schaden online gemeldet<strong>in unter 2 Minuten</strong></div>
+            <div class="float-card float-two">Wir melden uns zurück<strong>Persönlich & rasch</strong></div>
+          </div>
+        </div>
+      </section>
+      <div class="trust"><div class="wrap trust-row"><span><strong>Einfach erreichbar.</strong> Auch wenn es schnell gehen muss.</span><div class="trust-items"><span>✓ Klare Termine</span><span>✓ Transparente Beratung</span><span>✓ Hilfe bei Schäden</span><a href="community.html">✦ Mitglied der UNA Vorteils-Community</a></div></div></div>
+      <section id="ablauf"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">Kein Telefon-Marathon</p><h2>Ein Schaden ist schon Aufwand genug.</h2></div><p class="section-intro">Darum machen wir den ersten Schritt unkompliziert. Sie schicken uns die wichtigsten Infos, wir kümmern uns um den Rest – persönlich und ohne dass Sie Details mehrfach erklären müssen.</p></div><div class="steps"><article class="step"><span class="step-number">01</span><h3>Schaden melden</h3><p>Fotos und kurze Infos einfach vom Handy senden – wann es für Sie passt.</p></article><article class="step"><span class="step-number">02</span><h3>Wir prüfen & melden uns</h3><p>Wir sehen uns den Fall an, klären offene Punkte und vereinbaren den passenden Termin.</p></article><article class="step"><span class="step-number">03</span><h3>Fahrzeug abholen</h3><p>Sie erhalten klare Updates. Sobald alles fertig ist, wissen Sie sofort Bescheid.</p></article></div></div></section>
+      <section class="solution"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">Für Ihren Alltag gemacht</p><h2>Service, der Ihnen Zeit spart.</h2></div><p class="section-intro">Wir verbinden sauberes Handwerk mit einem Ablauf, der für Kunden einfach und für unseren Betrieb verlässlich ist.</p></div><div class="benefits"><article class="benefit"><div class="icon">▣</div><h3>Alles auf einen Blick</h3><p>Anfrage, Bilder und Kontaktdaten sind geordnet. Das verhindert Rückfragen und beschleunigt die erste Einschätzung.</p></article><article class="benefit"><div class="icon">◷</div><h3>Weniger Wartezeit</h3><p>Mit klaren Rückmeldungen und Erinnerungen wissen Sie, was als Nächstes passiert – und wann.</p></article><article class="benefit"><div class="icon">⌁</div><h3>Persönlich erreichbar</h3><p>Digitale Wege ersetzen keine Beratung. Sie schaffen Zeit für die Gespräche, die wirklich wichtig sind.</p></article><article class="benefit"><div class="icon">✓</div><h3>Professionell von Anfang an</h3><p>Ein klarer erster Eindruck schafft Vertrauen, noch bevor Sie Ihr Fahrzeug bei uns vorbeibringen.</p></article></div></div></section>
+      <section id="sichtbarkeit"><div class="wrap split"><div class="browser" aria-label="Beispiel einer Google-Unternehmensdarstellung"><div class="browser-top"><i></i><i></i><i></i></div><div class="map-card"><div class="pin"></div><div class="map-list"><b><span data-business="name"></span></b><span class="stars">★★★★★</span> · <strong>Karosserie & Lack</strong><br><span style="color:#637982">Öffnungszeiten · Anrufen · Route planen</span></div></div></div><div><p class="eyebrow">In <span data-business="city"></span> gefunden werden</p><h2>Da sichtbar sein, wo Kunden gerade suchen.</h2><p class="section-intro">Wer einen Lack- oder Unfallschaden hat, sucht meist nicht lange. Deshalb ist ein vollständiger, vertrauenswürdiger Auftritt bei Google und Google Maps genauso wichtig wie die Website.</p><ul class="bullets"><li>Klare Darstellung Ihrer Leistungen und Ihres Einzugsgebiets</li><li>Aktuelle Fotos, Öffnungszeiten und Kontaktmöglichkeiten</li><li>Ein einfacher Weg zu echten Kundenbewertungen</li><li>Anfragen direkt über Anruf, Route oder Website</li></ul><a class="button button-secondary" href="#kontakt">Unverbindlich anfragen →</a></div></div></section>
+      <section class="workflow"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">Der digitale Erstkontakt</p><h2>Fotos senden. Anliegen klären. Kosten grob einschätzen.</h2></div><p class="section-intro">Der Kunde schildert den Schaden am Handy und lädt Bilder hoch. Das System legt einen vollständigen Fall an und bereitet die erste Kostenvorschau vor. Der Chef bekommt nicht fünf verstreute Nachrichten, sondern einen klaren Vorgang zur schnellen Freigabe.</p></div><div class="flow"><div class="flow-demo"><div class="flow-label"><span class="pill"><span class="dot"></span> Einfach am Handy</span><b>Ihr Schaden. Gut dokumentiert.</b><p>Fahrzeug, Fotos, kurze Beschreibung und Kontakt – alles in einem Schritt.</p></div><div class="phone"><div class="phone-screen"><b style="font-size:.72rem">Schaden melden</b><div class="phone-line" style="width:62%"></div><div class="phone-line"></div><div class="phone-upload">＋ Fotos hochladen</div><div class="phone-line"></div><div class="phone-line" style="width:72%"></div><div style="padding:8px;text-align:center;border-radius:7px;background:#ddf15b;font-size:.61rem;font-weight:800">Kostenvorschau anfragen</div></div></div></div><div class="flow-small"><article class="flow-tile"><span>↗</span><b>Kein Informationschaos</b><p>Fotos, Kontaktdaten und Schadentext landen gemeinsam in einem strukturierten Fall.</p></article><article class="flow-tile"><span>⌁</span><b>Weniger Chef-Telefonate</b><p>Die erste Einschätzung und Rückfrage läuft geordnet. Der Chef entscheidet nur dort, wo Fachwissen nötig ist.</p></article></div></div></div></section>
+      <section class="services" id="leistungen"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">Unsere Leistungen</p><h2>Wir bringen Ihr Fahrzeug wieder in Form.</h2></div><p class="section-intro">Passen Sie diese Bereiche beim Kopieren der Vorlage an. Jeder Leistungsbereich kann auf eine eigene Seite oder direkt zur Anfrage führen.</p></div><div class="service-grid" id="service-grid"></div></div></section>
+      <section class="catalog" id="katalog"><div class="wrap"><div class="catalog-top"><div><p class="eyebrow">Service-Katalog</p><h2>Leistungen wählen. Preis sehen. Termin anfragen.</h2></div><p class="section-intro">Die häufigsten Werkstattleistungen transparent als Katalog – wie in einem kleinen Webshop, aber mit persönlicher Rückmeldung vor der verbindlichen Buchung.</p><p class="price-note">Alle Preise sind <strong>ab-Preise</strong> und können je nach Fahrzeug, Material und Aufwand abweichen. Die endgültige Bestätigung erfolgt persönlich.</p></div><div class="catalog-grid" id="catalog-grid"></div><div class="catalog-cart"><div><b id="cart-title">Ihr Servicekorb ist leer.</b><p id="cart-summary">Wählen Sie eine oder mehrere Leistungen aus dem Katalog.</p></div><div class="catalog-cart-actions"><span class="cart-total" id="cart-total"></span><button class="button" id="cart-book" type="button" data-open-modal>Termin anfragen →</button></div></div></div></section>
+      <section id="produkte"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">Der Fahrzeug-Shop</p><h2>Mehr verkaufen – ohne alles selbst lagern zu müssen.</h2></div><p class="section-intro">Neben Reparatur und Service können Kunden Lack, Folierungen, Felgen, Zubehör und passende Teile direkt entdecken. Das macht aus der Website einen zusätzlichen Umsatzkanal.</p></div><div class="commerce-grid" id="commerce-grid"></div><div class="shop-explainer"><div class="shop-path"><article class="shop-step"><span>01</span><b>Kunde wählt</b><p>Produkte und Leistungen sind verständlich nach Fahrzeugbedarf sortiert.</p></article><article class="shop-step"><span>02</span><b>Shop verarbeitet</b><p>Bestellung, Kundendaten und passender Handelspartner werden automatisch zugeordnet.</p></article><article class="shop-step"><span>03</span><b>Partner liefert</b><p>Die Ware geht direkt an die gewünschte Adresse – ohne eigenes Lager im Betrieb.</p></article><article class="shop-step"><span>04</span><b>Umsatz bleibt</b><p>Statusinfos laufen automatisiert, die vereinbarte Marge bleibt beim Betrieb.</p></article></div><aside class="shop-margin"><p class="eyebrow">Der Hebel dahinter</p><h3>Der Shop arbeitet auch, wenn gerade geschraubt wird.</h3><p>Sie legen Sortiment und Marge fest. Das System kann Bestellungen, Lieferantenzuweisung und Statusnachrichten abwickeln. So entstehen zusätzliche Verkäufe ohne Lagerraum und ohne jede Bestellung händisch weiterzuleiten.</p></aside></div></div></section>
+      <section class="growth" id="partner"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">Für Unternehmen & Partner</p><h2>Ein Betrieb, der weiterdenkt.</h2></div><p class="section-intro">Das Template ist auf mehr als einzelne Reparaturaufträge vorbereitet: wiederkehrende Betreuung, ergänzende Angebote, Kooperationen und eine bessere Auslastung können als eigene Wege hinzukommen.</p></div><div class="growth-grid"><article class="growth-panel"><p class="eyebrow">Für Flotten & Firmen</p><h3>Verlässlich betreut. Klar organisiert.</h3><p>Wiederkehrende Fahrzeuge, eindeutige Ansprechpartner und ein Ablauf, der für Unternehmen nachvollziehbar bleibt.</p><ul class="growth-list"><li>Ein zentraler Kontaktweg für Anfragen</li><li>Klare Rückmeldungen zum jeweiligen Status</li><li>Leistungen und Betreuung passend zum Bedarf</li></ul></article><article class="growth-panel"><p class="eyebrow">Für Kooperationen</p><h3>Gute Partner schaffen mehr Möglichkeiten.</h3><p>Ergänzende Fachbetriebe, Produkte und Services können dort verbunden werden, wo sie Kunden und Unternehmen wirklich weiterhelfen.</p><ul class="growth-list"><li>Passende Leistungen intelligent ergänzen</li><li>Neue Anfragen gemeinsam besser abwickeln</li><li>Starke Beziehungen langfristig ausbauen</li></ul></article></div><div class="partner-strip"><div><b data-partner="headline"></b><p data-partner="text"></p></div><a class="button" href="#kontakt">Partnerschaft anfragen →</a></div></div></section>
+      <section id="fragen"><div class="wrap faq"><div><p class="eyebrow">Gut zu wissen</p><h2>Häufige Fragen</h2><p class="section-intro">Die Antworten können Sie für jeden Betrieb einfach anpassen – passend zu Ablauf, Leistungen und Öffnungszeiten.</p></div><div class="faq-list"><div class="faq-item"><button type="button">Kann ich den Schaden vorab per Foto schicken?<span class="plus">+</span></button><div class="answer">Ja. Über unsere Online-Schadenmeldung können Sie Fotos und die wichtigsten Informationen direkt vom Handy senden. Wir melden uns danach persönlich bei Ihnen.</div></div><div class="faq-item"><button type="button">Unterstützen Sie bei der Versicherungsabwicklung?<span class="plus">+</span></button><div class="answer">Wir helfen Ihnen dabei, die erforderlichen Informationen und Unterlagen für den nächsten Schritt zusammenzustellen. Den genauen Ablauf klären wir mit Ihnen persönlich.</div></div><div class="faq-item"><button type="button">Wie schnell bekomme ich einen Termin?<span class="plus">+</span></button><div class="answer">Das hängt vom Schaden und der Auslastung ab. Nach Ihrer Anfrage melden wir uns rasch mit einer realistischen Rückmeldung und einem passenden Termin.</div></div><div class="faq-item"><button type="button">Kann ich auch einfach anrufen?<span class="plus">+</span></button><div class="answer">Natürlich. Wenn Sie lieber persönlich sprechen möchten, erreichen Sie uns während unserer Öffnungszeiten telefonisch.</div></div></div></div></section>
+      <section class="cta" id="kontakt"><div class="wrap cta-box"><div><p class="eyebrow">Ihr nächster Schritt</p><h2>Sie kümmern sich um Ihr Auto. Wir kümmern uns um den Rest.</h2></div><div class="cta-form"><button class="button button-main" data-open-modal>Schaden online melden →</button><a class="button button-secondary" data-phone-link>Jetzt anrufen: <span data-business="phone"></span></a></div><p class="cta-note">Antworten, Leistungen und Kontaktwege lassen sich für jeden Betrieb individuell anpassen.</p></div></section>
+    </main>
+    <footer><div class="wrap foot"><span><strong data-business="name"></strong> · <span data-business="city"></span></span><span>Vorlage von UNA Group · Für lokale Handwerksbetriebe anpassbar</span></div></footer>
+    <dialog id="damage-dialog"><div class="modal"><div class="modal-head"><div><p class="eyebrow" id="modal-eyebrow">Schadenmeldung</p><h3 id="modal-title">Erzählen Sie uns kurz, worum es geht.</h3></div><button class="close" aria-label="Fenster schließen" data-close-modal>×</button></div><p id="modal-text">Diese Demo zeigt den gewünschten Ablauf. Im echten Einsatz wird die Anfrage direkt an den Betrieb übermittelt.</p><form id="damage-form" class="form-grid"><input required placeholder="Ihr Name" aria-label="Ihr Name"><input required type="tel" placeholder="Telefonnummer" aria-label="Telefonnummer"><select id="service-select" required aria-label="Gewünschte Leistung"><option value="">Gewünschte Leistung auswählen</option></select><textarea placeholder="Was ist passiert? Wo ist der Schaden? (optional)" aria-label="Beschreibung"></textarea><label class="upload-field">＋ Fotos vom Fahrzeug hochladen <small>JPG, PNG oder HEIC · mehrere Bilder möglich</small><input type="file" accept="image/*" multiple aria-label="Fotos vom Fahrzeug hochladen"></label><button class="button button-main" type="submit">Kostenvorschau anfragen →</button></form><div class="form-success" id="form-success">Danke! In der echten Version ist der Fall jetzt vollständig erfasst. Die Fotos, Angaben und die erste Kostenvorschau liegen geordnet für den Betrieb bereit.</div></div></dialog>
+    <script>
+      document.title = `${BUSINESS.shortName} | ${BUSINESS.primaryService}`;
+      document.querySelectorAll('[data-business]').forEach(el => el.textContent = BUSINESS[el.dataset.business] || '');
+      document.querySelectorAll('[data-phone-link]').forEach(el => el.href = `tel:${BUSINESS.phoneLink}`);
+      const descriptions = [
+        'Instandsetzung nach Schäden, präzise Arbeiten und klare Beratung.',
+        'Von der Ausbesserung bis zur Neulackierung – passend zum Fahrzeug.',
+        'Schnelle, strukturierte Erstaufnahme und ein nachvollziehbarer Ablauf.',
+        'Unterstützung bei der Zusammenstellung der nötigen Unterlagen.',
+        'Kleine Schäden gezielt beheben und den Wert Ihres Fahrzeugs erhalten.',
+        'Für einen gepflegten Gesamteindruck und mehr Freude am Fahrzeug.'
+      ];
+      document.getElementById('service-grid').innerHTML = BUSINESS.services.map((service, index) => `<article class="service"><span class="service-tag">Leistung ${String(index + 1).padStart(2,'0')}</span><h3>${service}</h3><p>${descriptions[index] || 'Individuell abgestimmt auf Ihren Betrieb und Ihre Kunden.'}</p></article>`).join('');
+      const catalogGrid = document.getElementById('catalog-grid');
+      const selectedServices = [];
+      const serviceSelect = document.getElementById('service-select');
+      serviceSelect.innerHTML += BUSINESS.standardServices.map(service => `<option value="${service.title}">${service.title} – ab ${service.price} €</option>`).join('');
+      catalogGrid.innerHTML = BUSINESS.standardServices.map((service, index) => `<article class="catalog-card"><span class="catalog-icon">${service.icon}</span><h3>${service.title}</h3><p>${service.detail}</p><div class="price">ab ${service.price} €<small>${service.unit}</small></div><button class="button button-secondary" type="button" data-select-service="${index}">Auswählen +</button></article>`).join('');
+      function updateCart() {
+        const title = document.getElementById('cart-title');
+        const summary = document.getElementById('cart-summary');
+        const total = document.getElementById('cart-total');
+        if (!selectedServices.length) { title.textContent = 'Ihr Servicekorb ist leer.'; summary.textContent = 'Wählen Sie eine oder mehrere Leistungen aus dem Katalog.'; total.textContent = ''; return; }
+        const sum = selectedServices.reduce((value, service) => value + service.price, 0);
+        title.textContent = `${selectedServices.length} Leistung${selectedServices.length === 1 ? '' : 'en'} ausgewählt`;
+        summary.textContent = selectedServices.map(service => service.title).join(' · ');
+        total.textContent = `ab ${sum} €`;
+      }
+      function openRequest(selected) {
+        document.getElementById('form-success').style.display = 'none';
+        document.getElementById('damage-form').style.display = 'grid';
+        if (selected?.length) {
+          document.getElementById('modal-eyebrow').textContent = 'Serviceanfrage';
+          document.getElementById('modal-title').textContent = 'Ihre gewählten Leistungen anfragen.';
+          document.getElementById('modal-text').textContent = 'Wir bestätigen den passenden Termin und den finalen Preis nach den Fahrzeugdaten persönlich.';
+          serviceSelect.value = selected[0].title;
+        } else {
+          document.getElementById('modal-eyebrow').textContent = 'Schadenmeldung';
+          document.getElementById('modal-title').textContent = 'Erzählen Sie uns kurz, worum es geht.';
+          document.getElementById('modal-text').textContent = 'Diese Demo zeigt den gewünschten Ablauf. Im echten Einsatz wird die Anfrage direkt an den Betrieb übermittelt.';
+        }
+        dialog.showModal();
+      }
+      catalogGrid.querySelectorAll('[data-select-service]').forEach(button => button.addEventListener('click', () => { const service = BUSINESS.standardServices[Number(button.dataset.selectService)]; if (!selectedServices.some(item => item.title === service.title)) selectedServices.push(service); updateCart(); openRequest([service]); }));
+      document.getElementById('cart-book').addEventListener('click', () => openRequest(selectedServices));
+      updateCart();
+      document.getElementById('commerce-grid').innerHTML = BUSINESS.commerce.map(item => `<article class="commerce-card"><span>${item.icon}</span><h3>${item.title}</h3><p>${item.text}</p></article>`).join('');
+      document.querySelectorAll('[data-partner]').forEach(el => el.textContent = BUSINESS.partnerHeadline && el.dataset.partner === 'headline' ? BUSINESS.partnerHeadline : BUSINESS.partnerText);
+      document.querySelectorAll('.faq-item button').forEach(button => button.addEventListener('click', () => { const item = button.parentElement; item.classList.toggle('open'); button.querySelector('.plus').textContent = item.classList.contains('open') ? '−' : '+'; }));
+      const dialog = document.getElementById('damage-dialog');
+      document.querySelectorAll('[data-open-modal]').forEach(button => button.addEventListener('click', () => { if (button.id !== 'cart-book') openRequest(); }));
+      document.querySelector('[data-close-modal]').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+      document.getElementById('damage-form').addEventListener('submit', event => { event.preventDefault(); event.currentTarget.style.display = 'none'; document.getElementById('form-success').style.display = 'block'; });
+    </script>
+    <script>
+      document.querySelector('.nav-links').innerHTML = [
+        '<a href="index.html" aria-current="page">Start</a>',
+        '<a href="leistungen.html">Leistungen &amp; Preise</a>',
+        '<a href="shop.html">Shop</a>',
+        '<a href="tuning.html">Tuning &amp; Performance</a>',
+        '<a href="#kontakt">Schaden melden</a>',
+        '<a href="blueprint.html">UNA Konzept</a>'
+      ].join('');
+    </script>
+  </body>
+</html>

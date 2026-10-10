@@ -1,0 +1,1 @@
+(function(){const b=document.getElementById('language');if(!b)return;const bs=new URLSearchParams(location.search).get('lang')==='bs';b.textContent=bs?'BS · DE':'DE / BS';b.addEventListener('click',()=>{location.href='designs.html?lang='+(bs?'de':'bs');});})();
