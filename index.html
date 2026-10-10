@@ -162,6 +162,14 @@
         /* Feines Punktraster im Hero fuer Tech-Textur */
         .dot-grid { position: absolute; inset: 0; background-image: radial-gradient(rgba(15,23,42,0.09) 1px, transparent 1px); background-size: 24px 24px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%); mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%); pointer-events: none; }
 
+        /* UNA AI Bridge: visueller Deep-Tech-Block, ergänzend zum bestehenden Inhalt */
+        .una-bridge-panel { background: linear-gradient(135deg, #08111f 0%, #111c35 54%, #1e1b4b 100%); }
+        .una-bridge-art { min-height: 24rem; background: #0b1220; }
+        .una-bridge-art img { transition: transform 0.6s ease, filter 0.6s ease; }
+        .una-bridge-art:hover img { transform: scale(1.035); filter: saturate(1.08) contrast(1.04); }
+        .una-bridge-qr { box-shadow: 0 0 0 1px rgba(255,255,255,.18), 0 18px 45px rgba(8,15,30,.5); }
+        @media (max-width: 640px) { .una-bridge-art { min-height: 18rem; } }
+
         /* Sprachauswahl-Gate: erscheint sofort beim ersten Besuch */
         #lang-gate { position: fixed; inset: 0; z-index: 200; background: rgba(8,13,26,0.85); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 1rem; }
         .lang-gate-btn { transition: transform 0.2s ease, box-shadow 0.2s ease; }
@@ -461,6 +469,25 @@
             </div>
         </section>
 
+        <!-- MUSTERBEISPIEL: der bestehende UNAIS-Shop bleibt separat erreichbar und wird hier als Referenz gezeigt -->
+        <section id="shop-muster" class="reveal">
+            <div class="glass-card rounded-3xl border border-slate-200/80 overflow-hidden p-6 sm:p-8">
+                <div class="grid md:grid-cols-[.9fr_1.1fr] gap-7 items-center">
+                    <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 shadow-inner">
+                        <img src="assets/shop-modern.png" alt="Musteransicht des UNAIS Shops" class="w-full h-48 sm:h-60 object-cover">
+                    </div>
+                    <div class="space-y-4">
+                        <span class="inline-flex w-fit text-xs font-bold uppercase tracking-wider text-electric-700 bg-electric-50 px-3 py-1.5 rounded-full border border-electric-200" data-i18n="shop-muster-badge">Musterbeispiel · UNAIS Shop</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900 font-heading" data-i18n="shop-muster-title">Der bestehende Shop bleibt erhalten.</h2>
+                        <p class="text-slate-600 text-sm leading-relaxed" data-i18n="shop-muster-sub">Diese Ansicht dient als Beispiel und bleibt eigenständig online. Von hier aus können Interessenten den Shop ansehen und die digitale Produktwelt kennenlernen – ohne dass Inhalte oder Projekte entfernt werden.</p>
+                        <a href="https://unaai-shop.una-ai-systemss.chatgpt.site/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-extrabold px-5 py-3 rounded-xl transition btn-shimmer">
+                            <i class="fa-solid fa-eye"></i><span data-i18n="shop-muster-cta">Shop als Muster ansehen</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- AKTUELLES PROJEKT: Pattern Recognition Showcase -->
         <section class="reveal">
             <div class="glass-card rounded-3xl border border-slate-200/80 overflow-hidden relative" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);">
@@ -474,6 +501,43 @@
                         <span data-i18n="eco-projects-cta">Pattern Recognition entdecken</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNA AI BRIDGE: ergänzende Produkt-/Technologie-Erklärung, bestehende Abschnitte bleiben unverändert -->
+        <section id="una-bridge" class="reveal">
+            <div class="una-bridge-panel rounded-3xl border border-slate-700/70 overflow-hidden relative shadow-2xl">
+                <div class="absolute inset-0 opacity-40 pointer-events-none" style="background: radial-gradient(circle at 12% 18%, rgba(34,211,238,0.18), transparent 34%), radial-gradient(circle at 90% 80%, rgba(109,94,242,0.22), transparent 38%);"></div>
+                <div class="relative z-10 grid lg:grid-cols-[1.05fr_.95fr] gap-0 items-stretch">
+                    <div class="p-8 sm:p-12 lg:p-14 flex flex-col justify-center gap-6">
+                        <span class="w-fit text-xs font-bold uppercase tracking-[0.18em] text-cyan-200 bg-cyan-300/10 px-3.5 py-1.5 rounded-full border border-cyan-300/25" data-i18n="bridge-badge">UNA AI Bridge · freigegebenes Briefing</span>
+                        <div class="space-y-4">
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading leading-tight" data-i18n="bridge-title">Die UNA AI Bridge: einmal vorbereiten, schneller verstehen.</h2>
+                            <p class="text-slate-300 leading-relaxed max-w-xl" data-i18n="bridge-sub">Ein öffentlicher Zugang für Menschen und ein freigegebenes, strukturiertes Briefing für KI-Assistenten. Informationen werden einmal klar vorbereitet; der nächste Schritt wird schneller prüfbar. Verbindliche Entscheidungen bleiben beim Menschen.</p>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-200">
+                            <li class="flex gap-3 items-start"><span class="mt-0.5 text-cyan-300">01</span><span data-i18n="bridge-bullet-1">Klicken: die verständliche Präsentation öffnen</span></li>
+                            <li class="flex gap-3 items-start"><span class="mt-0.5 text-cyan-300">02</span><span data-i18n="bridge-bullet-2">Scannen: freigegebene Informationen für KI-Assistenten prüfen</span></li>
+                            <li class="flex gap-3 items-start"><span class="mt-0.5 text-cyan-300">03</span><span data-i18n="bridge-bullet-3">Lesen, prüfen, menschlich freigeben</span></li>
+                        </ul>
+                        <div class="flex flex-wrap gap-3 pt-1">
+                            <a href="https://unaai-shop.una-ai-systemss.chatgpt.site/#bridge" target="_blank" rel="noopener" class="bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-extrabold px-5 py-3 rounded-xl transition btn-shimmer inline-flex items-center gap-2">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i><span data-i18n="bridge-cta">Bridge öffnen</span>
+                            </a>
+                            <a href="https://unaai-shop.una-ai-systemss.chatgpt.site/#qr" target="_blank" rel="noopener" class="border border-white/20 hover:border-cyan-300/60 hover:bg-white/5 text-white font-bold px-5 py-3 rounded-xl transition inline-flex items-center gap-2">
+                                <i class="fa-solid fa-file-lines"></i><span data-i18n="bridge-secondary">Konzept ansehen</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="una-bridge-art relative overflow-hidden border-t lg:border-t-0 lg:border-l border-white/10">
+                        <img src="assets/bridge-silver-scene.jpg" alt="UNA AI Bridge – visuelle Verbindung zwischen Menschen und KI" class="absolute inset-0 w-full h-full object-cover opacity-75">
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate-950/35 via-transparent to-slate-950/75"></div>
+                        <div class="absolute left-6 bottom-6 sm:left-10 sm:bottom-10 w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-white/95 p-2.5 una-bridge-qr">
+                            <img src="assets/bridge-scan.png" alt="QR-Code zur UNA AI Bridge" class="w-full h-full object-contain rounded-lg">
+                        </div>
+                        <div class="absolute right-6 top-6 sm:right-10 sm:top-10 max-w-[13rem] rounded-2xl bg-slate-950/70 backdrop-blur-md border border-white/15 px-4 py-3 text-xs text-slate-100 leading-relaxed" data-i18n="bridge-caption">Ein Zugang. Klare Informationen. Der nächste Schritt bleibt nachvollziehbar.</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -858,6 +922,13 @@
                 "eco-projects-badge": "Aktuelles Projekt", "eco-projects-title": "Woran UNA-AI gerade arbeitet",
                 "eco-projects-sub": "Ein Blick hinter die Kulissen: Pattern Recognition ist eines der Projekte, mit denen wir uns beschäftigen und die wir weiterentwickeln.",
                 "eco-projects-cta": "Pattern Recognition entdecken",
+                "bridge-badge": "UNA AI Bridge · freigegebenes Briefing", "bridge-title": "Die UNA AI Bridge: einmal vorbereiten, schneller verstehen.",
+                "bridge-sub": "Ein öffentlicher Zugang für Menschen und ein freigegebenes, strukturiertes Briefing für KI-Assistenten. Informationen werden einmal klar vorbereitet; der nächste Schritt wird schneller prüfbar. Verbindliche Entscheidungen bleiben beim Menschen.",
+                "bridge-bullet-1": "Klicken: die verständliche Präsentation öffnen", "bridge-bullet-2": "Scannen: freigegebene Informationen für KI-Assistenten prüfen", "bridge-bullet-3": "Lesen, prüfen, menschlich freigeben",
+                "bridge-cta": "Bridge öffnen", "bridge-secondary": "Konzept ansehen", "bridge-caption": "Ein Zugang. Klare Informationen. Der nächste Schritt bleibt nachvollziehbar.",
+                "shop-muster-badge": "Musterbeispiel · UNAIS Shop", "shop-muster-title": "Der bestehende Shop bleibt erhalten.",
+                "shop-muster-sub": "Diese Ansicht dient als Beispiel und bleibt eigenständig online. Von hier aus können Interessenten den Shop ansehen und die digitale Produktwelt kennenlernen – ohne dass Inhalte oder Projekte entfernt werden.",
+                "shop-muster-cta": "Shop als Muster ansehen",
                 "steps-badge": "So einfach geht's", "steps-title": "In 3 Schritten zum sorgenfreien Büro",
                 "step-1-t": "Anrufen oder schreiben", "step-1-d": "Kurz Anliegen schildern.",
                 "step-2-t": "Wir schalten uns dazu", "step-2-d": "Ihr Bildschirm, mit Ihrer Freigabe.",
@@ -939,6 +1010,13 @@
                 "eco-projects-badge": "Trenutni projekat", "eco-projects-title": "Na čemu UNA-AI trenutno radi",
                 "eco-projects-sub": "Pogled iza kulisa: Pattern Recognition je jedan od projekata kojima se bavimo i koje dalje razvijamo.",
                 "eco-projects-cta": "Istražite Pattern Recognition",
+                "bridge-badge": "UNA AI Bridge · odobreni briefing", "bridge-title": "UNA AI Bridge: pripremite jednom, razumijte brže.",
+                "bridge-sub": "Javni pristup za ljude i odobren, strukturiran briefing za AI asistente. Informacije se pripreme jednom; sljedeći korak se može brže provjeriti. Obavezujuće odluke ostaju kod čovjeka.",
+                "bridge-bullet-1": "Kliknite: otvorite razumljivu prezentaciju", "bridge-bullet-2": "Skenirajte: provjerite odobrene informacije za AI asistente", "bridge-bullet-3": "Pročitajte, provjerite i odobrite kao čovjek",
+                "bridge-cta": "Otvori Bridge", "bridge-secondary": "Pogledaj koncept", "bridge-caption": "Jedan pristup. Jasne informacije. Sljedeći korak ostaje razumljiv.",
+                "shop-muster-badge": "Primjer za pregled · UNAIS Shop", "shop-muster-title": "Postojeći shop ostaje sačuvan.",
+                "shop-muster-sub": "Ovaj prikaz ostaje zasebno online kao primjer. Zainteresovani mogu otvoriti shop i upoznati digitalni svijet proizvoda – bez brisanja sadržaja ili projekata.",
+                "shop-muster-cta": "Pogledaj shop kao primjer",
                 "steps-badge": "Ovako jednostavno ide", "steps-title": "U 3 koraka do bezbrižne kancelarije",
                 "step-1-t": "Pozovite ili napišite", "step-1-d": "Ukratko opisite problem.",
                 "step-2-t": "Spajamo se preko ekrana", "step-2-d": "Vaš ekran, uz vašu dozvolu.",
