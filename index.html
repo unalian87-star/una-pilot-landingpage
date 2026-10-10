@@ -2,23 +2,47 @@
 <html lang="de">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="UnaAI Shop: Websites, Software, Automatisierungen und KI-Schulungen. Digitale Lösungen von UNA Group mit klaren Leistungen und persönlicher Betreuung.">
+<meta name="description" content="UNA AI Systeme auf una-ai.shop: Websites, Software, Automatisierungen, lokale Unternehmenssysteme und KI-Schulungen von UNA Group.">
 <meta name="theme-color" content="#2459ef">
 <link rel="stylesheet" href="motion-enhancements.css">
-<title>UnaAI Shop · Digitale Lösungen von UNA Group</title>
+<title>UNA AI Systeme · una-ai.shop</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232459ef'/%3E%3Cpath d='M18 16v23a14 14 0 0028 0V16' fill='none' stroke='white' stroke-width='8'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="shop.css"><link rel="stylesheet" href="motion-enhancements.css"><link rel="stylesheet" href="bridge-extension.css"><link rel="stylesheet" href="bridge-visual-enhancement.css"><script src="data.js" defer></script><script src="pricing-overrides.js" defer></script><script src="bridge-extension.js" defer></script><script src="pricing-display-fix.js" defer></script><script src="bridge-visual-enhancement.js" defer></script><link rel="stylesheet" href="bridge-newsletter.css"><script src="bridge-newsletter.js" defer></script><script src="shop.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt</a>
 <div class="topline"><span>UNA GROUP · WEB & DIGITAL</span><span>Persönlich eingerichtet. Gemeinsam weitergedacht.</span></div>
-<header class="header"><a class="brand" href="#shop" aria-label="UnaAI Shop Startseite"><img src="assets/logo.png" alt="UNA" width="48" height="48"><span>UnaAI<span class="brand-shop">shop.</span><small>Digitale Lösungen von UNA Group</small></span></a><nav aria-label="Hauptnavigation"><a href="#shop">Shop</a><a href="automations.html?lang=de">Automatisierungen</a><a href="designs.html?lang=de">Designs</a><a href="#bridge">AI Bridge</a><a href="#knowledge">Wissen & Einblicke</a><a href="#contact">Kontakt</a><a href="services.html">Bestehende Leistungen</a></nav><div class="header-actions"><a class="qr-nav" href="#qr" aria-label="Bridge QR-Code öffnen">QR / Bridge</a><button class="language" id="language" aria-label="Sprache wechseln">DE / BS</button><button class="basket" id="basket-open" aria-label="Auswahl öffnen">Auswahl <span id="basket-count">0</span></button></div></header>
+<header class="header"><a class="brand" href="#shop" aria-label="UNA AI Systeme Startseite"><img src="assets/logo.png" alt="UNA" width="48" height="48"><span>UNA AI<span class="brand-shop">systeme.</span><small>Shop & Einrichtung · una-ai.shop</small></span></a><nav aria-label="Hauptnavigation"><a href="#shop">Katalog</a><a href="automations.html?lang=de">Automatisierungen</a><a href="designs.html?lang=de">Designs</a><a href="#bridge">AI Bridge</a><a href="#knowledge">Wissen & Einblicke</a><a href="#contact">Kontakt</a><a href="services.html">Bestehende Leistungen</a></nav><div class="header-actions"><a class="qr-nav" href="#qr" aria-label="Bridge QR-Code öffnen">QR / Bridge</a><button class="language" id="language" aria-label="Sprache wechseln">DE / BS</button><button class="basket" id="basket-open" aria-label="Auswahl öffnen">Auswahl <span id="basket-count">0</span></button></div></header>
 <main id="main"><section class="hero"><div class="hero-copy"><p class="eyebrow">DER UNA SHOP FÜR IHR UNTERNEHMEN</p><h1>Gute Tools.<br>Klare Abläufe.<br><span>Mehr möglich.</span></h1><p class="hero-lead">Websites, Software und Automatisierungen – ausgewählt, eingerichtet und verbunden. Dazu lokale Unternehmenssysteme, Hardware, Diensthandys und Partner-Wartung.</p><a class="button" href="#catalog">Lösungen entdecken</a><p class="hero-meta">Websites ab 490 € · Workflows ab 490 € · Mengenrabatt für Firmenpakete</p></div><div class="hero-showcase"><div class="showcase-label"><span>01 / DIGITALER AUFTRITT</span><span>UNA SELECT</span></div><img src="assets/shop-modern.png" alt="Beispiel eines modernen UNA Webshop-Designs" width="900" height="600"><div class="showcase-bottom"><div><small>Ihr nächster digitaler Schritt</small><h2>Ein Shop, der zu Ihnen passt.</h2></div><span class="round-badge">ab<br><b>1.490 €</b></span></div></div></section><section class="benefits"><span>Individuelle Einrichtung</span><span>Ein persönlicher Ansprechpartner</span><span>Betreuung nach Bedarf</span><span>Firmenpakete statt Einzelpreise</span></section><section id="catalog" class="catalog"><div class="section-heading"><div><p class="eyebrow">AUSWÄHLEN. VERBINDEN. LOSLEGEN.</p><h2>Was möchten Sie bewegen?</h2></div><p>Von einer Website bis zu einem lokalen Unternehmenssystem. Je mehr Bausteine und Nutzer Sie bündeln, desto günstiger wird der Preis pro Einheit.</p></div><div class="catalog-controls"><div class="filters" id="filters"></div><label class="search"><span>⌕</span><input id="search" type="search" aria-label="Produkte suchen" placeholder="Lösung, Software oder Aufgabe suchen"></label></div><div class="results-line"><span id="results-count" aria-live="polite"></span><label>Sortieren <select id="sort"><option value="recommended">Empfohlen</option><option value="price">Preis aufsteigend</option><option value="name">Name A–Z</option></select></label></div><div class="products" id="products"></div></section></main>
 <footer id="footer"></footer>
 <dialog id="detail" aria-labelledby="detail-title"><button class="dialog-close" data-close="detail" aria-label="Details schließen">×</button><div id="detail-content"></div></dialog>
 <dialog id="basket-dialog" aria-labelledby="basket-title"><button class="dialog-close" data-close="basket-dialog" aria-label="Auswahl schließen">×</button><div id="basket-content"></div></dialog>
 <div class="toast" id="toast" role="status"></div>
 <noscript>UNA Group · Websites ab 490 € und Workflows ab 490 € netto. Firmenpakete werden nach Nutzerzahl und Umfang kalkuliert. Kontakt: <a href="mailto:co@una-AI.cloud">co@una-AI.cloud</a><a href="mailto:office@unaGroup.pro">office@unaGroup.pro</a> · <a href="mailto:office@unaGroup.pro">office@unaGroup.pro</a> · +387 65 242 437.</noscript>
+<script>
+(() => {
+  const alignUnaAiBrand = () => {
+    const brand = document.querySelector('.brand');
+    if (brand) {
+      const small = brand.querySelector('small');
+      if (small) small.textContent = 'Shop & Einrichtung · una-ai.shop';
+      brand.setAttribute('aria-label', 'UNA AI Systeme Startseite');
+    }
+    const nav = document.querySelector('.header nav a');
+    if (nav) nav.textContent = 'Katalog';
+    const eyebrow = document.querySelector('.hero .eyebrow');
+    if (eyebrow) eyebrow.textContent = 'UNA AI SYSTEME · IHR UNTERNEHMEN';
+    const footerBrand = document.querySelector('.footer-brand');
+    if (footerBrand) footerBrand.innerHTML = 'UNA AI<span style="color:#2459ef"> Systeme.</span>';
+    const footerCopy = document.querySelector('.footer-brand + p');
+    if (footerCopy) footerCopy.textContent = 'UNA AI Systeme auf una-ai.shop · Digitale Lösungen von UNA Group.';
+    document.title = 'UNA AI Systeme · una-ai.shop';
+  };
+  window.addEventListener('hashchange', () => setTimeout(alignUnaAiBrand, 0));
+  window.addEventListener('load', alignUnaAiBrand);
+  setTimeout(alignUnaAiBrand, 0);
+})();
+</script>
 </body></html>
 
 

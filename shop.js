@@ -74,3 +74,21 @@ window.addEventListener('pagehide',()=>lifecycle.abort(),{once:true});
 }
 
 
+// Shared brand language: una-ai.shop is the domain; UNA AI Systeme is the offer name.
+const alignUnaAiBrand=()=>{
+  const small=document.querySelector('.brand small');
+  if(small)small.textContent=t('Shop & Einrichtung · una-ai.shop','Shop i postavljanje · una-ai.shop');
+  const brand=document.querySelector('.brand');
+  if(brand)brand.setAttribute('aria-label',t('UNA AI Systeme Startseite','UNA AI sistemi početna stranica'));
+  const firstNav=document.querySelector('.header nav a');
+  if(firstNav)firstNav.textContent=t('Katalog','Katalog');
+  const heroEyebrow=document.querySelector('.hero .eyebrow');
+  if(heroEyebrow)heroEyebrow.textContent=t('UNA AI SYSTEME · IHR UNTERNEHMEN','UNA AI SISTEMI · VAŠA FIRMA');
+  const footerBrand=document.querySelector('.footer-brand');
+  if(footerBrand)footerBrand.innerHTML='UNA AI<span style="color:#2459ef"> Systeme.</span>';
+  const footerCopy=document.querySelector('.footer-brand + p');
+  if(footerCopy)footerCopy.textContent=t('UNA AI Systeme auf una-ai.shop · Digitale Lösungen von UNA Group.','UNA AI sistemi na una-ai.shop · Digitalna rješenja UNA Group.');
+  document.title=t('UNA AI Systeme · una-ai.shop','UNA AI sistemi · una-ai.shop');
+};
+window.addEventListener('hashchange',()=>setTimeout(alignUnaAiBrand,0));
+setTimeout(alignUnaAiBrand,0);
